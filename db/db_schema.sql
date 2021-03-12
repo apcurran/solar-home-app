@@ -21,6 +21,6 @@ CREATE TABLE user_order (
     customer_id SERIAL INT NOT NULL,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
-    payment_id VARCHAR NOT NULL,
+    payment_id VARCHAR, -- From Stripe payment
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );

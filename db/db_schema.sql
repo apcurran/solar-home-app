@@ -1,7 +1,6 @@
 -- Premium device type
 CREATE TABLE solar_tile (
     solar_tile_id SERIAL PRIMARY KEY,
-    tile_style VARCHAR(20) NOT NULL,
     price_per_500_sq_ft INT NOT NULL
 );
 
@@ -28,8 +27,8 @@ CREATE TABLE solar_device (
 );
 
 -- NOTE: payment_id from Stripe payment
-CREATE TABLE user_order (
-    user_order_id SERIAL PRIMARY KEY,
+CREATE TABLE customer_order (
+    customer_order_id SERIAL PRIMARY KEY,
     payment_id VARCHAR NOT NULL,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
@@ -38,6 +37,9 @@ CREATE TABLE user_order (
     street VARCHAR NOT NULL,
     state CHAR(2) NOT NULL,
     zip CHAR(5) NOT NULL,
+    selected_solar_device VARCHAR(5) NOT NULL,
+    accessory_battery_pack BOOLEAN NOT NULL,
+    home_sq_ft INT NOT NULL,
     order_total INT NOT NULL,
     created_at TIMESTAMP WITH TIME ZONE NOT NULL
 );

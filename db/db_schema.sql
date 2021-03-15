@@ -30,9 +30,14 @@ CREATE TABLE battery_pack (
 -- payment_id from Stripe payment
 CREATE TABLE user_order (
     user_order_id SERIAL PRIMARY KEY,
-    -- customer_id SERIAL UNIQUE,
+    payment_id VARCHAR,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
-    payment_id VARCHAR,
+    email VARCHAR NOT NULL,
+    phone CHAR(10) NOT NULL,
+    street VARCHAR NOT NULL,
+    state CHAR(2) NOT NULL,
+    zip CHAR(5) NOT NULL,
+    order_total INT NOT NULL,
     created_at TIMESTAMP WITH TIME ZONE
 );

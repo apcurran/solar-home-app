@@ -3,7 +3,9 @@ CREATE TABLE solar_device (
     solar_tile_id INT,
     FOREIGN KEY(solar_tile_id) REFERENCES solar_tile(solar_tile_id)
     solar_panel_id INT,
-    FOREIGN KEY(solar_panel_id) REFERENCES solar_panel(solar_panel_id)
+    FOREIGN KEY(solar_panel_id) REFERENCES solar_panel(solar_panel_id),
+    battery_pack_id INT,
+    FOREIGN KEY(battery_pack_id) REFERENCES battery_pack(battery_pack_id)
 );
 
 -- Premium device type
@@ -28,7 +30,7 @@ CREATE TABLE battery_pack (
 -- payment_id from Stripe payment
 CREATE TABLE user_order (
     user_order_id SERIAL PRIMARY KEY,
-    customer_id SERIAL UNIQUE,
+    -- customer_id SERIAL UNIQUE,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
     payment_id VARCHAR,

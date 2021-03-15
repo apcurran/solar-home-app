@@ -39,7 +39,7 @@ async function populateDb() {
     await db.query(
         `
             INSERT INTO solar_device
-                (solar_tile_id, solar_panel_id, batter_pack_id)
+                (solar_tile_id, solar_panel_id, battery_pack_id)
             VALUES
                 ($1, $2, $3)
         `,

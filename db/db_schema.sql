@@ -18,11 +18,11 @@ CREATE TABLE battery_pack (
 
 CREATE TABLE solar_device (
     solar_device_id SERIAL PRIMARY KEY,
-    solar_tile_id INT,
+    solar_tile_id INT NOT NULL,
     FOREIGN KEY(solar_tile_id) REFERENCES solar_tile(solar_tile_id),
-    solar_panel_id INT,
+    solar_panel_id INT NOT NULL,
     FOREIGN KEY(solar_panel_id) REFERENCES solar_panel(solar_panel_id),
-    battery_pack_id INT,
+    battery_pack_id INT NOT NULL,
     FOREIGN KEY(battery_pack_id) REFERENCES battery_pack(battery_pack_id)
 );
 

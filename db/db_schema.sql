@@ -30,7 +30,7 @@ CREATE TABLE battery_pack (
 -- payment_id from Stripe payment
 CREATE TABLE user_order (
     user_order_id SERIAL PRIMARY KEY,
-    payment_id VARCHAR,
+    payment_id VARCHAR NOT NULL,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
     email VARCHAR NOT NULL,

@@ -11,16 +11,18 @@ CREATE TABLE solar_panel (
     price_per_500_sq_ft INT NOT NULL
 );
 
+-- Accessory
 CREATE TABLE battery_pack (
     id SERIAL PRIMARY KEY,
     price INT NOT NULL
 );
 
+-- payment_id from Stripe payment
 CREATE TABLE user_order (
     id SERIAL PRIMARY KEY,
     customer_id SERIAL UNIQUE,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
-    payment_id VARCHAR, -- From Stripe payment
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+    payment_id VARCHAR,
+    created_at TIMESTAMP WITH TIME ZONE
 );

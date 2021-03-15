@@ -1,7 +1,9 @@
 CREATE TABLE solar_device (
     solar_device_id SERIAL PRIMARY KEY,
-    device_type_id INT,
-    FOREIGN KEY(device_type_id) REFERENCES solar_tile(solar_tile_id)
+    solar_tile_id INT,
+    FOREIGN KEY(solar_tile_id) REFERENCES solar_tile(solar_tile_id)
+    solar_panel_id INT,
+    FOREIGN KEY(solar_panel_id) REFERENCES solar_panel(solar_panel_id)
 );
 
 -- Premium device type

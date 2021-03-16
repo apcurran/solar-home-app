@@ -29,7 +29,7 @@ async function getSolarInfo(req, res, next) {
     }
 }
 
-async function patchSolarTile() {
+async function patchSolarTile(req, res, next) {
     try {
         // Validate incoming data first
 
@@ -45,7 +45,7 @@ async function patchSolarTile() {
     }
 }
 
-async function patchSolarPanel() {
+async function patchSolarPanel(req, res, next) {
     try {
         // Validate incoming data first
 
@@ -61,7 +61,7 @@ async function patchSolarPanel() {
     }
 }
 
-async function patchBatteryPack() {
+async function patchBatteryPack(req, res, next) {
     try {
         // Validate incoming data first
 

@@ -6,6 +6,7 @@ const express = require("express");
 const PORT = process.env.PORT || 5000;
 // Import routers
 const solarDesignRouter = require("./api/routes/solar-design-router");
+const ordersRouter = require("./api/routes/orders");
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(express.json());
 
 // API routers
 app.use("/api/solar-design", solarDesignRouter);
+app.use("/api/orders", ordersRouter);
 
 // General server error handler
 app.use((err, req, res, next) => {

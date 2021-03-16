@@ -12,6 +12,17 @@ function solarDeviceValidation(data) {
     return schema.validateAsync(data);
 }
 
+function batteryPackValidation(data) {
+    const schema = Joi.object({
+        batteryPrice: Joi
+                        .number()
+                        .required()
+    });
+
+    return schema.validateAsync(data);
+}
+
 module.exports = {
-    solarDeviceValidation
+    solarDeviceValidation,
+    batteryPackValidation
 };

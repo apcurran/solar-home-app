@@ -4,7 +4,7 @@ require("dotenv").config();
 
 const db = require("../db/index");
 
-async function populateDb() {
+(async function populateDb() {
     // Create solar_tile data
     const tilePricePer500SqFt = 7500 // U.S. dollars
     const savedSolarTileData = await db.query(`
@@ -49,6 +49,4 @@ async function populateDb() {
             savedBatteryPackData.rows[0].battery_pack_id
         ]
     );
-}
-
-populateDb();
+})();

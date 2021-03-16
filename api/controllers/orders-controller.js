@@ -20,6 +20,22 @@ async function getOrder(req, res, next) {
 
 async function postOrder(req, res, next) {
     try {
+        const {
+            first_name,
+            last_name,
+            email,
+            phone,
+            street,
+            state,
+            zip,
+            selected_solar_device,
+            accessory_battery_pack,
+            home_sq_ft
+        } = req.body;
+
+        const nowDate = new Date();
+        // Create payment_id from Stripe
+
         
 
     } catch (err) {

@@ -4,7 +4,7 @@ const db = require("../../db/index");
 
 async function getOrder(req, res, next) {
     try {
-        const { orderId } = req.body;
+        const { orderId } = req.params;
         const ordersInfo = (await db.query(`
             SELECT *
             FROM customer_order
@@ -21,7 +21,7 @@ async function getOrder(req, res, next) {
 async function postOrder(req, res, next) {
     try {
         
-        
+
     } catch (err) {
         next(err);
     }

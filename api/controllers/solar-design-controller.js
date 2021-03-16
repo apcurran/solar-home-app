@@ -29,6 +29,57 @@ async function getSolarInfo(req, res, next) {
     }
 }
 
+async function patchSolarTile() {
+    try {
+        // Validate incoming data first
+
+        const { pricePer500SqFt } = req.body;
+        
+        await db.query(`
+            UPDATE solar_tile
+            SET price_per_500_sq_ft = $1
+        `, [pricePer500SqFt]);
+
+    } catch (err) {
+        next(err);
+    }
+}
+
+async function patchSolarPanel() {
+    try {
+        // Validate incoming data first
+
+        const { pricePer500SqFt } = req.body;
+        
+        await db.query(`
+            UPDATE solar_panel
+            SET price_per_500_sq_ft = $1
+        `, [pricePer500SqFt]);
+
+    } catch (err) {
+        next(err);
+    }
+}
+
+async function patchBatteryPack() {
+    try {
+        // Validate incoming data first
+
+        const { batteryPrice } = req.body;
+        
+        await db.query(`
+            UPDATE battery_pack
+            SET price = $1
+        `, [batteryPrice]);
+
+    } catch (err) {
+        next(err);
+    }
+}
+
 module.exports = {
     getSolarInfo,
+    patchSolarTile,
+    patchSolarPanel,
+    patchBatteryPack,
 };

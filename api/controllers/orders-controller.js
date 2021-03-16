@@ -2,6 +2,8 @@
 
 const db = require("../../db/index");
 
+const { ordersValidation } = require("../validation/orders-validation");
+
 async function getOrder(req, res, next) {
     try {
         const { orderId } = req.params;
@@ -21,7 +23,7 @@ async function getOrder(req, res, next) {
 async function postOrder(req, res, next) {
     try {
         // Validate incoming data first
-        
+        await ordersValidation(req.body);
         
     } catch (err) {
         return res.status(400).json({ error: err.details[0].message });

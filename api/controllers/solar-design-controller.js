@@ -2,6 +2,8 @@
 
 const db = require("../../db/index");
 
+const { solarDeviceValidation, batteryPackValidation } = require("../validation/solar-design-validation");
+
 async function getSolarInfo(req, res, next) {
     try {
         // Combine solar_tile, solar_panel, and battery_pack tables
@@ -32,7 +34,13 @@ async function getSolarInfo(req, res, next) {
 async function patchSolarTile(req, res, next) {
     try {
         // Validate incoming data first
+        await solarDeviceValidation(req.body);
 
+    } catch (err) {
+        return res.status(400).json({ error: err.details[0].message });
+    }
+
+    try {
         const { pricePer500SqFt } = req.body;
         
         await db.query(`
@@ -47,8 +55,13 @@ async function patchSolarTile(req, res, next) {
 
 async function patchSolarPanel(req, res, next) {
     try {
-        // Validate incoming data first
+        await solarDeviceValidation(req.body);
 
+    } catch (err) {
+        return res.status(400).json({ error: err.details[0].message });
+    }
+
+    try {
         const { pricePer500SqFt } = req.body;
         
         await db.query(`
@@ -63,8 +76,13 @@ async function patchSolarPanel(req, res, next) {
 
 async function patchBatteryPack(req, res, next) {
     try {
-        // Validate incoming data first
+        await batteryPackValidation(req.body);
 
+    } catch (err) {
+        return res.status(400).json({ error: err.details[0].message });
+    }
+
+    try {
         const { batteryPrice } = req.body;
         
         await db.query(`

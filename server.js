@@ -5,7 +5,7 @@ require("dotenv").config();
 const express = require("express");
 const PORT = process.env.PORT || 5000;
 // Import routers
-
+const solarDesignRouter = require("./api/routes/solar-design-router");
 
 const app = express();
 
@@ -19,6 +19,7 @@ if (process.env.NODE_ENV === "development") {
 app.use(express.json());
 
 // API routers
+app.use("/api/solar-design", solarDesignRouter);
 
 // General server error handler
 app.use((err, req, res, next) => {

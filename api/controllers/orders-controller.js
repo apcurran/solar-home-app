@@ -18,6 +18,16 @@ async function getOrder(req, res, next) {
     }
 }
 
+async function postOrder(req, res, next) {
+    try {
+        
+        
+    } catch (err) {
+        next(err);
+    }
+}
+
 module.exports = {
     getOrder,
+    postOrder
 };

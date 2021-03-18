@@ -5,7 +5,8 @@
 }
 
 :root {
-  --header-padding-horiz: 10rem;
+  --header-padding-horiz: 8rem;
+  --home-sect-padding-vert: 3rem;
 
   --light-indigo: #c7d2fe;
   --med-indigo: #818cf8;

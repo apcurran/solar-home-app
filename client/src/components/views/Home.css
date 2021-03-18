@@ -29,3 +29,32 @@
     font-size: 1.5rem;
     font-weight: 400;
 }
+
+/* Main Content Layout/Styling */
+.home__main__sect {
+    display: grid;
+    grid-template-columns: 3.5fr 5fr;
+}
+
+.home__main__sect__inner-sect--left {
+    padding: var(--home-sect-padding-vert) var(--header-padding-horiz);
+}
+
+.home__main__sect__inner-sect__title {
+    margin-bottom: .75rem;
+}
+
+.home__main__sect__inner-sect__desc {
+    max-width: 60ch;
+    line-height: 1.6;
+}
+
+.home__main__sect__inner-sect--right__fig {
+    width: 100%;
+}
+
+.home__main__sect__inner-sect--right__fig__img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+}

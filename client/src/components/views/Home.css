@@ -1,6 +1,31 @@
 .home__hero {
     min-height: 100vh;
-    background-color: #818CF8;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+
+    background-color: var(--med-indigo);
     background-image: url("https://res.cloudinary.com/dev-project/image/upload/f_auto,q_auto/v1616017378/aperture-solar/hero-solar-roof-bw_hdsfsk.jpg");
     background-blend-mode: multiply;
+}
+
+.home__hero__title-sect {
+    padding-left: var(--header-padding-horiz);
+    grid-column: 1 / 2;
+    grid-row: 4 / 5;
+}
+
+.home__hero__title,
+.home__hero__title--subheading {
+    color: #fff;
+}
+
+.home__hero__title {
+    font-size: 4.5rem;
+    line-height: 1;
+}
+
+.home__hero__title--subheading {
+    font-size: 1.5rem;
+    font-weight: 400;
 }

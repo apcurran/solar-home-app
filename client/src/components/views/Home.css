@@ -36,7 +36,7 @@
     grid-template-columns: 3.5fr 5fr;
 }
 
-.home__main__sect__inner-sect--left {
+.home__main__sect__inner-sect--content {
     padding: var(--home-sect-padding-vert) var(--header-padding-horiz);
 }
 
@@ -49,11 +49,11 @@
     line-height: 1.6;
 }
 
-.home__main__sect__inner-sect--right__fig {
+.home__main__sect__inner-sect--visual__fig {
     width: 100%;
 }
 
-.home__main__sect__inner-sect--right__fig__img {
+.home__main__sect__inner-sect--visual__fig__img {
     display: block;
     width: 100%;
     object-fit: cover;

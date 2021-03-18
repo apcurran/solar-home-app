@@ -46,7 +46,9 @@
     padding: var(--home-sect-padding-vert) var(--header-padding-horiz);
 }
 
-.home__main__sect__inner-sect__title {
+.home__main__sect__inner-sect__title,
+/* Apply to main section titles and bottom app section title */
+.home__main__app-sect__desc__title {
     margin-bottom: .75rem;
     font-size: 1.625rem;
     color: var(--very-dark-grey);
@@ -56,7 +58,9 @@
     color: var(--very-light-indigo);
 }
 
-.home__main__sect__inner-sect__desc {
+.home__main__sect__inner-sect__desc,
+/* Apply to both main sections, and bottom app section */
+.home__main__app-sect__desc__para {
     max-width: 60ch;
     line-height: 1.6;
     font-size: 1.0625rem;
@@ -76,4 +80,14 @@
     width: 100%;
     height: 100vh;
     object-fit: cover;
+}
+
+/* Ending section */
+.home__main__app-sect {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+    padding-top: 6rem;
+    padding-bottom: 6rem;
 }

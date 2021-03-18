@@ -8,9 +8,14 @@
   --header-padding-horiz: 8rem;
   --home-sect-padding-vert: 3rem;
 
+  --very-light-indigo: #eef2ff;
   --light-indigo: #c7d2fe;
   --med-indigo: #818cf8;
   --dark-indigo: #6366f1;
+  --very-dark-indigo: #3730a3;
+
+  --dark-grey: #374151;
+  --very-dark-grey: #111827;
 }
 
 body {

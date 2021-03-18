@@ -36,24 +36,42 @@
     grid-template-columns: 3.5fr 5fr;
 }
 
-.home__main__sect__inner-sect--content {
+/* Flip layout order, bg color, and text color for even sections */
+.home__main__sect:nth-of-type(even) {
+    grid-template-columns: 5fr 3.5fr;
+    background-color: var(--very-dark-indigo);
+}
+
+.home__main__sect__inner-sect-content {
     padding: var(--home-sect-padding-vert) var(--header-padding-horiz);
 }
 
 .home__main__sect__inner-sect__title {
     margin-bottom: .75rem;
+    font-size: 1.625rem;
+    color: var(--very-dark-grey);
+}
+
+.home__main__sect__inner-sect__title--light {
+    color: var(--very-light-indigo);
 }
 
 .home__main__sect__inner-sect__desc {
     max-width: 60ch;
     line-height: 1.6;
+    font-size: 1.0625rem;
+    color: var(--dark-grey);
 }
 
-.home__main__sect__inner-sect--visual__fig {
+.home__main__sect__inner-sect__desc--light {
+    color: var(--light-indigo);
+}
+
+.home__main__sect__inner-sect-visual__fig {
     width: 100%;
 }
 
-.home__main__sect__inner-sect--visual__fig__img {
+.home__main__sect__inner-sect-visual__fig__img {
     display: block;
     width: 100%;
     object-fit: cover;

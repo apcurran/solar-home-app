@@ -18,6 +18,10 @@
   --very-dark-grey: #111827;
 }
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+body,
+label,
+input,
+textarea,
+button {
+  font-family: 'Open Sans', sans-serif;
 }

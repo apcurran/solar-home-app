@@ -1,0 +1,21 @@
+.nav__list {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    list-style: none;
+}
+
+.nav__list__item--left {
+    grid-column: 1 / 2;
+}
+
+.nav__list__item--center {
+    grid-column: 2 / 3;
+    justify-self: center;
+
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    list-style: none;
+    color: #fff;
+}

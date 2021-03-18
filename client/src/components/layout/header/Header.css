@@ -1,0 +1,14 @@
+.nav__logo-link {
+    text-decoration: none;
+}
+
+.header-home {
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+}
+
+.nav {
+    width: 100%;
+    padding: 1rem 2rem;
+}

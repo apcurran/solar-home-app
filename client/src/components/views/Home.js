@@ -41,6 +41,32 @@ function Home() {
                             </p>
                         </div>
                     </section>
+                    <section className="home__main__sect">
+                        <div className="home__main__sect__inner-sect-content">
+                            <h2 className="home__main__sect__inner-sect__title">Quick, Professional Installation</h2>
+                            <p className="home__main__sect__inner-sect__desc">
+                                Phasellus sit amet varius neque. Fusce mattis erat at est mattis, sed gravida lorem maximus. Phasellus eget pharetra nibh. Aliquam ex lectus, commodo vel tortor in, interdum molestie neque. Curabitur laoreet, sapien nec porta faucibus, risus diam finibus dolor, quis convallis velit est eget libero.
+                            </p>
+                        </div>
+                        <div className="home__main__sect__inner-sect-visual">
+                            <figure className="home__main__sect__inner-sect-visual__fig">
+                                <img  className="home__main__sect__inner-sect-visual__fig__img" src="https://res.cloudinary.com/dev-project/image/upload/f_auto,q_auto/v1616094372/aperture-solar/quality-construction-solar-panels_pbvp4h.jpg" alt="Construction workers installing solar panels."/>
+                            </figure>
+                        </div>
+                    </section>
+                    <section className="home__main__sect">
+                        <div className="home__main__sect__inner-sect-visual">
+                            <figure className="home__main__sect__inner-sect-visual__fig">
+                                <img  className="home__main__sect__inner-sect-visual__fig__img" src="https://res.cloudinary.com/dev-project/image/upload/f_auto,q_auto/v1616094373/aperture-solar/roof-tiles_frr2i6.jpg" alt="Construction workers installing solar panels."/>
+                            </figure>
+                        </div>
+                        <div className="home__main__sect__inner-sect-content">
+                            <h2 className="home__main__sect__inner-sect__title home__main__sect__inner-sect__title--light">Quality, Durable Construction</h2>
+                            <p className="home__main__sect__inner-sect__desc home__main__sect__inner-sect__desc--light">
+                                Phasellus sit amet varius neque. Fusce mattis erat at est mattis, sed gravida lorem maximus. Phasellus eget pharetra nibh. Aliquam ex lectus, commodo vel tortor in, interdum molestie neque. Curabitur laoreet, sapien nec porta faucibus, risus diam finibus dolor, quis convallis velit est eget libero.
+                            </p>
+                        </div>
+                    </section>
                 </main>
             </div>
         </>

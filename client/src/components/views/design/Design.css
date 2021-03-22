@@ -1,4 +1,14 @@
-.design {
+.design-container {
+    height: 100vh;
     display: grid;
     grid-template-columns: 3fr 1fr;
+    grid-template-rows: auto 1fr;
+}
+
+.header-design {
+    grid-column: 1 / -1;
+}
+
+.design__gallery {
+
 }

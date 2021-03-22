@@ -6,13 +6,15 @@ import CustomizerUi from "../../views/design/customizer-ui/CustomizerUi";
 
 function Design() {
     return (
-        <>
+        <div className="design-container">
             <Header headerDesign="header-design" />
-            <div className="design">
+            <Gallery />
+            <CustomizerUi />
+            {/* <div className="design">
                 <Gallery />
                 <CustomizerUi />
-            </div>
-        </>
+            </div> */}
+        </div>
     );
 }
 

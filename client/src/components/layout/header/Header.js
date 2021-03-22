@@ -3,9 +3,9 @@ import LoggedOutLinks from "./LoggedOutLinks";
 
 import "./Header.css";
 
-function Header({ headerHome }) {
+function Header({ headerHome, headerDesign }) {
     return (
-        <header className={`header ${headerHome ? headerHome : null}`}>
+        <header className={`header ${headerHome ? headerHome : headerDesign}`}>
             <nav className="nav">
                 <LoggedOutLinks />
             </nav>

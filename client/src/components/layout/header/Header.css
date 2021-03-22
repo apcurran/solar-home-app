@@ -8,6 +8,18 @@
     z-index: 1;
 }
 
+.header-design {
+    width: 100%;
+}
+
+.header-design .logo-icon {
+    fill: var(--dark-indigo);
+}
+
+.header-design .nav__list__item--center {
+    color: var(--dark-grey);
+}
+
 .nav {
     padding: 1.5rem var(--header-padding-horiz);
 }

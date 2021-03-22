@@ -1,4 +1,10 @@
+.design__gallery {
+    height: 100%;
+    display: flex;
+}
+
 .design__galery__img {
-    width: 100%;
-    display: block;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
 }

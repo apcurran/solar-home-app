@@ -10,10 +10,6 @@ function Design() {
             <Header headerDesign="header-design" />
             <Gallery />
             <CustomizerUi />
-            {/* <div className="design">
-                <Gallery />
-                <CustomizerUi />
-            </div> */}
         </div>
     );
 }

@@ -1,0 +1,13 @@
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.25rem 0;
+
+    background-color: var(--very-dark-indigo);
+}
+
+.footer__title {
+    color: var(--light-indigo);
+    font-size: .875rem;
+}

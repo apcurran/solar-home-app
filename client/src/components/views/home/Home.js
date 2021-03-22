@@ -1,5 +1,6 @@
 import "./Home.css";
 import Header from "../../layout/header/Header";
+import Footer from "../../layout/footer/Footer";
 
 function Home() {
     return (
@@ -76,6 +77,7 @@ function Home() {
                     </section>
                 </main>
             </div>
+            <Footer />
         </>
     );
 }

@@ -1,5 +1,5 @@
 .design-container {
-    height: 100vh;
+    /* height: 100vh; */
     display: grid;
     grid-template-columns: 3fr 1fr;
     grid-template-rows: auto 1fr;
@@ -7,8 +7,21 @@
 
 .header-design {
     grid-column: 1 / -1;
+    grid-row: 1 / 2;
+    height: 10vh;
+}
+
+.design__gallery,
+.design__customizer {
+    height: 90vh;
 }
 
 .design__gallery {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
 
+.design__customizer {
+    grid-column: 2 / -1;
+    grid-row: 2 / 3;
 }

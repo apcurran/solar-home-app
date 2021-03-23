@@ -1,10 +1,10 @@
 .design__gallery {
-    height: 100%;
-    display: flex;
+    /* height: 100%; */
 }
 
 .design__galery__img {
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    height: 100%;
+    display: block;
     object-fit: cover;
 }

@@ -6,7 +6,7 @@ function CustomizerUi() {
             <form className="design__customizer__form">
                 <h1 className="design__customizer__form__title">Pick Your Style</h1>
                 <div className="design__customizer__form__controls-container">
-                    <label htmlFor="tiles" className="design__design__customizer__form__label">
+                    <label htmlFor="tiles" className="design__design__customizer__form__label radio-label">
                         <input name="selected-solar-device" id="tiles" type="radio" className="design__design__customizer__form__radio-btn radio-btn"/>
                         <span className="radio-btn--fake"></span>
                         Solar Tiles

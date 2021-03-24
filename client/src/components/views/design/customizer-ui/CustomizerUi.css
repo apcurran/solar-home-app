@@ -3,3 +3,44 @@
     border-top: 1px solid var(--light-grey);
     overflow-y: scroll;
 }
+
+.radio-label {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.radio-btn {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+}
+
+.radio-btn--fake {
+    width: 1.25em;
+    height: 1.25em;
+    padding: .125em;
+    border: 2px solid var(--light-indigo);
+    border-radius: 50%;
+    margin-right: .5em;
+}
+
+.radio-btn--fake::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 50%;
+    background-color: var(--dark-indigo);
+
+    transform: scale(0);
+    transition: transform 120ms ease-in-out;
+}
+
+.radio-btn:checked + .radio-btn--fake::after {
+    transform: scale(1);
+}

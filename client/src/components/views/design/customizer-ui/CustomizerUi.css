@@ -1,7 +1,63 @@
 .design__customizer {
-    padding: 2rem;
+    padding: 2rem 4rem;
     border-top: 1px solid var(--light-grey);
     overflow-y: scroll;
+}
+
+.design__customizer__form__title {
+    margin-bottom: 1rem;
+}
+
+.title--note-included {
+    margin-bottom: 0;
+}
+
+.design__customizer__form__title-note {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.design__customizer__form__controls-container-outer-wrapper {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+/* General form input container parent class */
+.design__customizer__form__controls-container {
+
+}
+
+.design__customizer__form__label {
+    display: inline-block;
+    margin-bottom: .25rem;
+}
+
+.design__customizer__form__input {
+    padding: .5rem;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--light-grey);
+}
+
+.design__customizer__form__btn {
+    padding: .5rem 1.25rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--very-dark-indigo);
+    color: var(--very-light-indigo);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+/* Only radio btns */
+.radio-btn-controls-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
 }
 
 .radio-label {
@@ -11,6 +67,7 @@
 }
 
 .radio-btn {
+    /* Visually hidden, but sr-accessible */
     clip: rect(0 0 0 0);
     clip-path: inset(50%);
     width: 1px;
@@ -35,7 +92,7 @@
     height: 100%;
     display: block;
     border-radius: 50%;
-    background-color: var(--dark-indigo);
+    background-color: var(--very-dark-indigo);
 
     transform: scale(0);
     transition: transform 120ms ease-in-out;

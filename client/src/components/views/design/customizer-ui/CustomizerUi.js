@@ -3,6 +3,7 @@ import { useState } from "react";
 import "./CustomizerUi.css";
 
 function CustomizerUi() {
+    const [solarDevice, setSolarDevice] = useState("");
     const [phone, setPhone] = useState("");
 
     function phoneHandler(event) {
@@ -18,12 +19,12 @@ function CustomizerUi() {
                 <h1 className="design__customizer__form__title">Pick Your Style</h1>
                 <div className="radio-btn-controls-container">
                     <label htmlFor="tiles" className="design__customizer__form__label radio-label">
-                        <input name="selected-solar-device" id="tiles" type="radio" className="design__customizer__form__radio-btn radio-btn"/>
+                        <input value="tiles" onChange={(event) => setSolarDevice(event.target.value)} name="selected-solar-device" id="tiles" type="radio" className="design__customizer__form__radio-btn radio-btn" required/>
                         <span className="radio-btn--fake"></span>
                         Solar Tiles
                     </label>
                     <label htmlFor="panels" className="design__customizer__form__label radio-label">
-                        <input name="selected-solar-device" id="panels" type="radio" className="design__customizer__form__radio-btn radio-btn"/>
+                        <input value="panels" onChange={(event) => setSolarDevice(event.target.value)} name="selected-solar-device" id="panels" type="radio" className="design__customizer__form__radio-btn radio-btn" required/>
                         <span className="radio-btn--fake"></span>
                         Solar Panels
                     </label>
@@ -77,7 +78,7 @@ function CustomizerUi() {
                     <label htmlFor="card-name" className="design__customizer__form__label">Name on Card</label>
                     <input type="text" name="card-name" id="card-name" className="design__customizer__form__input" required/>
                 </div>
-                <div className="design__customizer__form__controls-container">
+                {/* <div className="design__customizer__form__controls-container">
                     <label htmlFor="card-number" className="design__customizer__form__label">Card Number</label>
                     <input type="number" name="card-number" id="card-number" className="design__customizer__form__input" required/>
                 </div>
@@ -96,7 +97,7 @@ function CustomizerUi() {
                 <div className="design__customizer__form__controls-container">
                     <label htmlFor="billing-zip" className="design__customizer__form__label">Billing Zip Code</label>
                     <input type="number" name="billing-zip" id="billing-zip" className="design__customizer__form__input col--half-width" minLength="5" maxLength="5" required/>
-                </div>
+                </div> */}
             </form>
         </main>
     );

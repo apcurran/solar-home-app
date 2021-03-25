@@ -4,6 +4,7 @@ import "./CustomizerUi.css";
 
 function CustomizerUi() {
     const [solarDevice, setSolarDevice] = useState("");
+    const [isBatteryPack, setIsBatteryPack] = useState(false);
     const [phone, setPhone] = useState("");
 
     function phoneHandler(event) {
@@ -33,8 +34,8 @@ function CustomizerUi() {
                 <span className="design__customizer__form__title-note">(Optional)</span>
                 <div className="design__customizer__form__controls-container-outer-wrapper">
                     <div className="design__customizer__form__controls-container">
-                        <label htmlFor="battery" className="design__customizer__form__label">Battery Packs Qty.</label>
-                        <input type="number" name="battery" id="battery" className="design__customizer__form__input battery-input" maxLength="1"/>
+                        <label htmlFor="battery" className="design__customizer__form__label">Include Battery Pack?</label>
+                        <input onChange={(event) => setIsBatteryPack(event.target.checked)} type="checkbox" name="battery" id="battery" className="design__customizer__form__input battery-input"/>
                     </div>
                     <div className="design__customizer__form__controls-container">
                         <button className="design__customizer__form__btn" type="button">Add</button>

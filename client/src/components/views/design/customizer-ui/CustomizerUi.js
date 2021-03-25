@@ -5,7 +5,14 @@ import "./CustomizerUi.css";
 function CustomizerUi() {
     const [solarDevice, setSolarDevice] = useState("");
     const [isBatteryPack, setIsBatteryPack] = useState(false);
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [streetAddress, setStreetAddress] = useState("");
+    const [usStateAbbrev, setUsStateAbbrev] = useState("");
+    const [zip, setZip] = useState("");
+    const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
+    const [homeSize, setHomeSize] = useState(null);
 
     function phoneHandler(event) {
         const inputVal = event.target.value;

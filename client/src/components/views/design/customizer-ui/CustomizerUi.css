@@ -29,7 +29,7 @@
 .design__customizer__form__controls-container {
     display: flex;
     flex-direction: column;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .design__customizer__form__label {

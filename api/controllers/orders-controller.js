@@ -1,5 +1,6 @@
 "use strict";
 
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const db = require("../../db/index");
 
 const { ordersValidation } = require("../validation/orders-validation");
@@ -41,7 +42,36 @@ async function postOrder(req, res, next) {
     }
 }
 
+async function postCheckoutSession(req, res, next) {
+    try {
+        const session = await stripe.checkout.sessions.create({
+            payment_method_types: ["card"],
+            line_items: [
+                {
+                    price_data: {
+                        currency: "usd",
+                        product_data: {
+                            // TODO: Fill in data
+                        },
+                        unit_amount: 1000,// TODO: Determine pricing
+                    },
+                    quantity: 1,
+                }
+            ],
+            mode: "payment",
+            success_url: ``, // TODO
+            cancel_url: `` // TODO
+        });
+
+        res.status(200).json({ id: session.id });
+
+    } catch (err) {
+        next(err);
+    }
+}
+
 module.exports = {
     getOrder,
-    postOrder
+    postOrder,
+    postCheckoutSession
 };

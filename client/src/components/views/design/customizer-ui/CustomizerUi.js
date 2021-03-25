@@ -12,7 +12,7 @@ function CustomizerUi() {
     const [zip, setZip] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
-    const [homeSize, setHomeSize] = useState(null);
+    const [homeSize, setHomeSize] = useState("");
 
     function phoneHandler(event) {
         const inputVal = event.target.value;
@@ -46,27 +46,27 @@ function CustomizerUi() {
                 <h1 className="design__customizer__form__title">Personal Info</h1>
                 <div className="design__customizer__form__controls-container">
                     <label htmlFor="first-name" className="design__customizer__form__label">First Name</label>
-                    <input type="text" name="first-name" id="first-name" className="design__customizer__form__input" required/>
+                    <input value={firstName} onChange={(event) => setFirstName(event.target.value)} type="text" name="first-name" id="first-name" className="design__customizer__form__input" required/>
                 </div>
                 <div className="design__customizer__form__controls-container">
                     <label htmlFor="last-name" className="design__customizer__form__label">Last Name</label>
-                    <input type="text" name="last-name" id="last-name" className="design__customizer__form__input" required/>
+                    <input value={lastName} onChange={(event) => setLastName(event.target.value)} type="text" name="last-name" id="last-name" className="design__customizer__form__input" required/>
                 </div>
                 <div className="design__customizer__form__controls-container">
                     <label htmlFor="street" className="design__customizer__form__label">Street Address</label>
-                    <input type="text" name="street" id="street" className="design__customizer__form__input" required/>
+                    <input value={streetAddress} onChange={(event) => setStreetAddress(event.target.value)} type="text" name="street" id="street" className="design__customizer__form__input" required/>
                 </div>
                 <div className="design__customizer__form__controls-container">
                     <label htmlFor="state" className="design__customizer__form__label">State <span className="design__customizer__form__label-note">(2 Characters)</span></label>
-                    <input type="text" name="state" id="state" className="design__customizer__form__input col--half-width" minLength="2" maxLength="2" required/>
+                    <input value={usStateAbbrev} onChange={(event) => setUsStateAbbrev(event.target.value)} type="text" name="state" id="state" className="design__customizer__form__input col--half-width" minLength="2" maxLength="2" required/>
                 </div>
                 <div className="design__customizer__form__controls-container">
                     <label htmlFor="zip" className="design__customizer__form__label">Zip Code <span className="design__customizer__form__label-note">(5 Characters)</span></label>
-                    <input type="number" name="zip" id="zip" className="design__customizer__form__input col--half-width" minLength="5" maxLength="5" required/>
+                    <input value={zip} onChange={(event) => setUsStateAbbrev(event.target.value)} type="number" name="zip" id="zip" className="design__customizer__form__input col--half-width" minLength="5" maxLength="5" required/>
                 </div>
                 <div className="design__customizer__form__controls-container">
                     <label htmlFor="email" className="design__customizer__form__label">Email</label>
-                    <input type="email" name="email" id="email" className="design__customizer__form__input" required/>
+                    <input value={email} onChange={(event) => setEmail(event.target.value)} type="email" name="email" id="email" className="design__customizer__form__input" required/>
                 </div>
                 <div className="design__customizer__form__controls-container">
                     <label htmlFor="phone" className="design__customizer__form__label">Phone Number</label>
@@ -74,13 +74,13 @@ function CustomizerUi() {
                 </div>
                 <div className="design__customizer__form__controls-container">
                     <label htmlFor="home-size" className="design__customizer__form__label">Home Size <span className="design__customizer__form__label-note">(sq. ft.)</span></label>
-                    <input type="number" name="home-size" id="home-size" className="design__customizer__form__input col--half-width" required/>
+                    <input value={homeSize} onChange={(event) => setHomeSize(event.target.value)} type="number" name="home-size" id="home-size" className="design__customizer__form__input col--half-width" required/>
                 </div>
                 <h1 className="design__customizer__form__title">Payment Details</h1>
-                <div className="design__customizer__form__controls-container">
+                {/* <div className="design__customizer__form__controls-container">
                     <label htmlFor="card-name" className="design__customizer__form__label">Name on Card</label>
                     <input type="text" name="card-name" id="card-name" className="design__customizer__form__input" required/>
-                </div>
+                </div> */}
                 {/* <div className="design__customizer__form__controls-container">
                     <label htmlFor="card-number" className="design__customizer__form__label">Card Number</label>
                     <input type="number" name="card-number" id="card-number" className="design__customizer__form__input" required/>

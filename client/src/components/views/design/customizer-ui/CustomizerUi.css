@@ -18,14 +18,18 @@
 }
 
 .design__customizer__form__controls-container-outer-wrapper {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
     align-items: flex-end;
     justify-content: space-between;
 }
 
 /* General form input container parent class */
 .design__customizer__form__controls-container {
-
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
 }
 
 .design__customizer__form__label {
@@ -33,11 +37,20 @@
     margin-bottom: .25rem;
 }
 
+.design__customizer__form__label-note {
+    color: var(--dark-grey);
+}
+
 .design__customizer__form__input {
     padding: .5rem;
     border: none;
     border-radius: 4px;
     background-color: var(--light-grey);
+}
+
+/* Utility class */
+.col--half-width {
+    max-width: 50%;
 }
 
 .design__customizer__form__btn {

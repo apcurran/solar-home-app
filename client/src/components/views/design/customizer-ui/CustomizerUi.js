@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import "./CustomizerUi.css";
 
-function CustomizerUi() {
+function CustomizerUi({ handleImgChange }) {
     const [solarDevice, setSolarDevice] = useState("");
     const [isBatteryPack, setIsBatteryPack] = useState(false);
     const [firstName, setFirstName] = useState("");
@@ -13,6 +13,10 @@ function CustomizerUi() {
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [homeSize, setHomeSize] = useState("");
+
+    useEffect(() => {
+        handleImgChange(solarDevice);
+    }, [solarDevice]);
 
     function phoneHandler(event) {
         const inputVal = event.target.value;

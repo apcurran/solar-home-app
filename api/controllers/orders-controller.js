@@ -31,11 +31,11 @@ async function postOrder(req, res, next) {
     }
 
     try {
-
+        console.log(req.body);
         const nowDate = new Date();
         // Create payment_id from Stripe
 
-        
+        res.status(200).json({ message: "Your order was recieved!" });
 
     } catch (err) {
         next(err);

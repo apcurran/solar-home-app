@@ -21,8 +21,40 @@ function CustomizerUi() {
         setPhone(validatedInputval);
     }
 
+    async function handleSubmit(event) {
+        event.preventDefault();
+
+        try {
+            // Make fetch req
+            const response = await fetch("/api/orders", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    firstName,
+                    lastName,
+                    email,
+                    phone,
+                    street: streetAddress,
+                    state: usStateAbbrev,
+                    zip,
+                    selectedSolarDevice: solarDevice,
+                    accessoryBatteryPack: isBatteryPack,
+                    homeSqFt: homeSize
+                })
+            });
+
+            const message = await response.json();
+            console.log(message);
+
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
     return (
-        <main className="design__customizer">
+        <main onSubmit={handleSubmit} className="design__customizer">
             <form className="design__customizer__form">
                 <h1 className="design__customizer__form__title">Pick Your Style</h1>
                 <div className="radio-btn-controls-container">
@@ -62,7 +94,7 @@ function CustomizerUi() {
                 </div>
                 <div className="design__customizer__form__controls-container">
                     <label htmlFor="zip" className="design__customizer__form__label">Zip Code <span className="design__customizer__form__label-note">(5 Characters)</span></label>
-                    <input value={zip} onChange={(event) => setUsStateAbbrev(event.target.value)} type="number" name="zip" id="zip" className="design__customizer__form__input col--half-width" minLength="5" maxLength="5" required/>
+                    <input value={zip} onChange={(event) => setZip(event.target.value)} type="number" name="zip" id="zip" className="design__customizer__form__input col--half-width" minLength="5" maxLength="5" required/>
                 </div>
                 <div className="design__customizer__form__controls-container">
                     <label htmlFor="email" className="design__customizer__form__label">Email</label>
@@ -77,6 +109,7 @@ function CustomizerUi() {
                     <input value={homeSize} onChange={(event) => setHomeSize(event.target.value)} type="number" name="home-size" id="home-size" className="design__customizer__form__input col--half-width" required/>
                 </div>
                 <h1 className="design__customizer__form__title">Payment Details</h1>
+                <button className="design__customizer__form__submit-btn" type="submit">Pay Now</button>
                 {/* <div className="design__customizer__form__controls-container">
                     <label htmlFor="card-name" className="design__customizer__form__label">Name on Card</label>
                     <input type="text" name="card-name" id="card-name" className="design__customizer__form__input" required/>

@@ -21,6 +21,53 @@ async function getOrder(req, res, next) {
     }
 }
 
+async function postCheckoutSession(req, res, next) {
+    try {
+        // Validate incoming data first
+        await ordersValidation(req.body);
+        
+    } catch (err) {
+        return res.status(400).json({ error: err.details[0].message });
+    }
+    // Get quantity for per 500 sq. ft. amt. from front-end
+    console.log(req.body);
+    const {
+        selectedSolarDevice,
+        accessoryBatteryPack,
+        homeSqFt
+    } = req.body;
+
+        
+    
+    try {
+        const session = await stripe.checkout.sessions.create({
+            payment_method_types: ["card"],
+            line_items: [
+                {
+                    price_data: {
+                        currency: "usd",
+                        product_data: {
+                            name: "Solar Tiles",
+                            images: [""]
+                        },
+                        unit_amount: 10000,// per 500 sq. ft. (rounded up)
+                    },
+                    quantity: 1, // TODO: Get qty. from front-end
+                }
+            ],
+            mode: "payment",
+            success_url: ``, // TODO
+            cancel_url: `` // TODO
+        });
+        
+        res.status(200).json({ id: session.id });
+        
+    } catch (err) {
+        next(err);
+    }
+}
+
+// Route to call after postCheckoutSession has successfully ran
 async function postOrder(req, res, next) {
     try {
         // Validate incoming data first
@@ -36,34 +83,6 @@ async function postOrder(req, res, next) {
         // Create payment_id from Stripe
 
         res.status(200).json({ message: "Your order was recieved!" });
-
-    } catch (err) {
-        next(err);
-    }
-}
-
-async function postCheckoutSession(req, res, next) {
-    try {
-        const session = await stripe.checkout.sessions.create({
-            payment_method_types: ["card"],
-            line_items: [
-                {
-                    price_data: {
-                        currency: "usd",
-                        product_data: {
-                            // TODO: Fill in data
-                        },
-                        unit_amount: 1000,// TODO: Determine pricing
-                    },
-                    quantity: 1,
-                }
-            ],
-            mode: "payment",
-            success_url: ``, // TODO
-            cancel_url: `` // TODO
-        });
-
-        res.status(200).json({ id: session.id });
 
     } catch (err) {
         next(err);

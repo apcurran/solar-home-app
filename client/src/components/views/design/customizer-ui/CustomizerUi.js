@@ -26,19 +26,12 @@ function CustomizerUi() {
 
         try {
             // Make fetch req
-            const response = await fetch("/api/orders", {
+            const response = await fetch("/api/orders/create-checkout-session", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    firstName,
-                    lastName,
-                    email,
-                    phone,
-                    street: streetAddress,
-                    state: usStateAbbrev,
-                    zip,
                     selectedSolarDevice: solarDevice,
                     accessoryBatteryPack: isBatteryPack,
                     homeSqFt: homeSize
@@ -47,6 +40,8 @@ function CustomizerUi() {
 
             const message = await response.json();
             console.log(message);
+
+            // After a successful payment, make API req to create order on db
 
         } catch (err) {
             console.error(err);

@@ -85,7 +85,8 @@ function CustomizerUi({ handleImgChange }) {
                     color: "#818cf8"
                 }
             }
-        }
+        },
+        hidePostalCode: true
     };
 
     return (

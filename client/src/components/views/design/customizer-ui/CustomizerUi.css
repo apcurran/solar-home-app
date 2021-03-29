@@ -32,6 +32,11 @@
     margin-bottom: 1.5rem;
 }
 
+.design__customizer__form__label,
+.design__customizer__form__input {
+    font-size: var(--base-fz);
+}
+
 .design__customizer__form__label {
     display: inline-block;
     margin-bottom: .25rem;
@@ -46,6 +51,7 @@
     border: none;
     border-radius: 4px;
     background-color: var(--light-grey);
+    font-size: 1rem;
 }
 
 /* Utility class */

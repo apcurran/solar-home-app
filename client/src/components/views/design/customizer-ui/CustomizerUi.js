@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { CardElement } from "@stripe/react-stripe-js";
 
 import "./CustomizerUi.css";
 
@@ -75,6 +76,17 @@ function CustomizerUi({ handleImgChange }) {
         }
     }
 
+    const cardElementOptions = {
+        style: {
+            base: {
+                fontSize: "1.125rem"
+            },
+            invalid: {
+
+            }
+        }
+    };
+
     return (
         <main onSubmit={handleSubmit} className="design__customizer">
             <form className="design__customizer__form">
@@ -131,6 +143,7 @@ function CustomizerUi({ handleImgChange }) {
                     <input value={homeSize} onChange={(event) => setHomeSize(event.target.value)} type="number" name="home-size" id="home-size" className="design__customizer__form__input col--half-width" required/>
                 </div>
                 <h1 className="design__customizer__form__title">Payment Details</h1>
+                <CardElement options={cardElementOptions} />
                 <button className="design__customizer__form__submit-btn" type="submit">Pay Now</button>
                 {/* <div className="design__customizer__form__controls-container">
                     <label htmlFor="card-name" className="design__customizer__form__label">Name on Card</label>

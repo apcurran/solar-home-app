@@ -63,7 +63,7 @@
 .home__main__app-sect__desc__para {
     max-width: 60ch;
     line-height: 1.6;
-    font-size: 1.0625rem;
+    font-size: var(--base-fz);
     color: var(--dark-grey);
 }
 

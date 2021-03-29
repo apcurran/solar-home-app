@@ -25,8 +25,33 @@ function CustomizerUi({ handleImgChange }) {
         setPhone(validatedInputval);
     }
 
+    function createItemsArr() {
+        // Pull items from local state
+        let itemsArr = [];
+
+        const mySolarDevice = {
+            name: solarDevice,
+            qty: Math.round(homeSize / 500) // Calc qty from homeSize div by 500, rounded up
+        };
+
+        itemsArr.push(mySolarDevice);
+
+        if (isBatteryPack) {
+            const myBatteryPack = {
+                name: "batteryPack",
+                qty: 1
+            };
+
+            itemsArr.push(myBatteryPack);
+        }
+
+        return itemsArr;
+    }
+
     async function handleSubmit(event) {
         event.preventDefault();
+
+        const myItems = createItemsArr();
 
         try {
             // Make fetch req
@@ -36,9 +61,7 @@ function CustomizerUi({ handleImgChange }) {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    selectedSolarDevice: solarDevice,
-                    accessoryBatteryPack: isBatteryPack,
-                    homeSqFt: homeSize
+                    itemsArr: myItems
                 })
             });
 
@@ -58,12 +81,12 @@ function CustomizerUi({ handleImgChange }) {
                 <h1 className="design__customizer__form__title">Pick Your Style</h1>
                 <div className="radio-btn-controls-container">
                     <label htmlFor="tiles" className="design__customizer__form__label radio-label">
-                        <input value="tiles" onChange={(event) => setSolarDevice(event.target.value)} name="selected-solar-device" id="tiles" type="radio" className="design__customizer__form__radio-btn radio-btn" required/>
+                        <input value="solarTiles" onChange={(event) => setSolarDevice(event.target.value)} name="selected-solar-device" id="tiles" type="radio" className="design__customizer__form__radio-btn radio-btn" required/>
                         <span className="radio-btn--fake"></span>
                         Solar Tiles
                     </label>
                     <label htmlFor="panels" className="design__customizer__form__label radio-label">
-                        <input value="panels" onChange={(event) => setSolarDevice(event.target.value)} name="selected-solar-device" id="panels" type="radio" className="design__customizer__form__radio-btn radio-btn" required/>
+                        <input value="solarPanels" onChange={(event) => setSolarDevice(event.target.value)} name="selected-solar-device" id="panels" type="radio" className="design__customizer__form__radio-btn radio-btn" required/>
                         <span className="radio-btn--fake"></span>
                         Solar Panels
                     </label>

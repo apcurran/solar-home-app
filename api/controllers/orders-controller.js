@@ -4,6 +4,7 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const db = require("../../db/index");
 
 const { ordersValidation } = require("../validation/orders-validation");
+const { createLineItems } = require("../utils/create-line-items");
 
 async function getOrder(req, res, next) {
     try {
@@ -22,45 +23,32 @@ async function getOrder(req, res, next) {
 }
 
 async function postCheckoutSession(req, res, next) {
-    try {
-        // Validate incoming data first
-        await ordersValidation(req.body);
+    // try {
+    //     // Validate incoming data first
+    //     await ordersValidation(req.body);
         
-    } catch (err) {
-        return res.status(400).json({ error: err.details[0].message });
-    }
+    // } catch (err) {
+    //     return res.status(400).json({ error: err.details[0].message });
+    // }
     // Get quantity for per 500 sq. ft. amt. from front-end
-    console.log(req.body);
-    const {
-        selectedSolarDevice,
-        accessoryBatteryPack,
-        homeSqFt
-    } = req.body;
-
-        
+    console.log("REQ BODY:", req.body);
+    // get items as an array from req.body POST data
+    const { itemsArr } = req.body;
+    // Create line_items array
+    const myLineItems = createLineItems(itemsArr);
+    console.log("My lineItems", myLineItems);
+    console.log("Product Data", myLineItems[0].price_data.product_data);
     
     try {
-        const session = await stripe.checkout.sessions.create({
-            payment_method_types: ["card"],
-            line_items: [
-                {
-                    price_data: {
-                        currency: "usd",
-                        product_data: {
-                            name: "Solar Tiles",
-                            images: [""]
-                        },
-                        unit_amount: 10000,// per 500 sq. ft. (rounded up)
-                    },
-                    quantity: 1, // TODO: Get qty. from front-end
-                }
-            ],
-            mode: "payment",
-            success_url: ``, // TODO
-            cancel_url: `` // TODO
-        });
+        // const session = await stripe.checkout.sessions.create({
+        //     payment_method_types: ["card"],
+        //     line_items: myLineItems,
+        //     mode: "payment",
+        //     success_url: ``, // TODO
+        //     cancel_url: `` // TODO
+        // });
         
-        res.status(200).json({ id: session.id });
+        // res.status(200).json({ id: session.id });
         
     } catch (err) {
         next(err);

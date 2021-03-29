@@ -79,10 +79,11 @@ function CustomizerUi({ handleImgChange }) {
     const cardElementOptions = {
         style: {
             base: {
-                fontSize: "1.125rem"
-            },
-            invalid: {
-
+                fontSize: "1.0625rem",
+                color: "#3730a3",
+                "::placeholder": {
+                    color: "#818cf8"
+                }
             }
         }
     };

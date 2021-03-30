@@ -54,11 +54,6 @@
     font-size: 1rem;
 }
 
-/* Battery checkbox */
-.battery-input {
-    
-}
-
 /* Utility class */
 .col--half-width {
     max-width: 50%;
@@ -90,7 +85,7 @@
     cursor: pointer;
 }
 
-.radio-btn {
+.sr-only {
     /* Visually hidden, but sr-accessible */
     clip: rect(0 0 0 0);
     clip-path: inset(50%);
@@ -102,6 +97,7 @@
 }
 
 .radio-btn--fake {
+    flex-shrink: 0;
     width: 1.25em;
     height: 1.25em;
     padding: .125em;
@@ -124,6 +120,28 @@
 
 .radio-btn:checked + .radio-btn--fake::after {
     transform: scale(1);
+}
+
+/* Battery pack checkbox */
+.battery-checkbox-label {
+    display: inline-flex;
+    align-items: flex-start;
+    cursor: pointer;
+}
+
+.battery-checkbox--fake {
+    /* Vert and horiz alignment of checkmark symbol within box */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    margin-right: 1rem;
+    width: 1.25em;
+    height: 1.25em;
+    padding: .125em;
+    border: 2px solid #ccc;
+    border-radius: 4px;
 }
 
 .design__customizer__form__submit-btn {

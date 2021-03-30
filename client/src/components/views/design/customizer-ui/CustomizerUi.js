@@ -117,12 +117,12 @@ function CustomizerUi({ handleImgChange }) {
                 <h1 className="design__customizer__form__title">Pick Your Style</h1>
                 <div className="radio-btn-controls-container">
                     <label htmlFor="tiles" className="design__customizer__form__label radio-label">
-                        <input value="solarTiles" onChange={(event) => setSolarDevice(event.target.value)} name="selected-solar-device" id="tiles" type="radio" className="design__customizer__form__radio-btn radio-btn" required/>
+                        <input value="solarTiles" onChange={(event) => setSolarDevice(event.target.value)} name="selected-solar-device" id="tiles" type="radio" className="design__customizer__form__radio-btn radio-btn sr-only" required/>
                         <span className="radio-btn--fake"></span>
                         Solar Tiles
                     </label>
                     <label htmlFor="panels" className="design__customizer__form__label radio-label">
-                        <input value="solarPanels" onChange={(event) => setSolarDevice(event.target.value)} name="selected-solar-device" id="panels" type="radio" className="design__customizer__form__radio-btn radio-btn" required/>
+                        <input value="solarPanels" onChange={(event) => setSolarDevice(event.target.value)} name="selected-solar-device" id="panels" type="radio" className="design__customizer__form__radio-btn radio-btn sr-only" required/>
                         <span className="radio-btn--fake"></span>
                         Solar Panels
                     </label>
@@ -130,8 +130,11 @@ function CustomizerUi({ handleImgChange }) {
                 <h1 className="design__customizer__form__title title--note-included">Add Battery Pack</h1>
                 <span className="design__customizer__form__title-note">(Optional)</span>
                 <div className="design__customizer__form__controls-container">
-                    <label htmlFor="battery" className="design__customizer__form__label">Include Battery Pack?</label>
-                    <input onChange={(event) => setIsBatteryPack(event.target.checked)} type="checkbox" name="battery" id="battery" className="design__customizer__form__input battery-input"/>
+                    <label htmlFor="battery" className="design__customizer__form__label battery-checkbox-label">
+                        <input onChange={(event) => setIsBatteryPack(event.target.checked)} type="checkbox" name="battery" id="battery" className="design__customizer__form__input battery-checkbox sr-only"/>
+                        <span className="battery-checkbox--fake"></span>
+                        Include Battery Pack?
+                    </label>
                 </div>
                 <h1 className="design__customizer__form__title">Personal Info</h1>
                 <div className="design__customizer__form__controls-container">

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { CardElement } from "@stripe/react-stripe-js";
+import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
 import "./CustomizerUi.css";
 
@@ -18,6 +18,23 @@ function CustomizerUi({ handleImgChange }) {
     useEffect(() => {
         handleImgChange(solarDevice);
     }, [solarDevice]);
+
+    // Stripe
+    const cardElementOptions = {
+        style: {
+            base: {
+                fontSize: "18px",
+                color: "#3730a3",
+                "::placeholder": {
+                    color: "#818cf8"
+                }
+            }
+        },
+        hidePostalCode: true
+    };
+
+    const stripe = useStripe();
+    const elements = useElements();
 
     function phoneHandler(event) {
         const inputVal = event.target.value;
@@ -66,8 +83,8 @@ function CustomizerUi({ handleImgChange }) {
                 })
             });
 
-            const message = await response.json();
-            console.log(message);
+            const session = await response.json();
+            
 
             // After a successful payment, make API req to create order on db
 
@@ -75,19 +92,6 @@ function CustomizerUi({ handleImgChange }) {
             console.error(err);
         }
     }
-
-    const cardElementOptions = {
-        style: {
-            base: {
-                fontSize: "1.0625rem",
-                color: "#3730a3",
-                "::placeholder": {
-                    color: "#818cf8"
-                }
-            }
-        },
-        hidePostalCode: true
-    };
 
     return (
         <main onSubmit={handleSubmit} className="design__customizer">

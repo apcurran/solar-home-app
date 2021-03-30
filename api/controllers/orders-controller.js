@@ -30,25 +30,27 @@ async function postCheckoutSession(req, res, next) {
     // } catch (err) {
     //     return res.status(400).json({ error: err.details[0].message });
     // }
-    // Get quantity for per 500 sq. ft. amt. from front-end
-    console.log("REQ BODY:", req.body);
+
+    // Get quantity per 500 sq. ft. amt. from front-end
     // get items as an array from req.body POST data
     const { itemsArr } = req.body;
     // Create line_items array
     const myLineItems = createLineItems(itemsArr);
     console.log("My lineItems", myLineItems);
-    console.log("Product Data", myLineItems[0].price_data.product_data);
+
+    const domainUrl = process.env.NODE_ENV === "production" ? `${DOMAIN_URL}` : "http://localhost:3000/design";
     
     try {
-        // const session = await stripe.checkout.sessions.create({
-        //     payment_method_types: ["card"],
-        //     line_items: myLineItems,
-        //     mode: "payment",
-        //     success_url: ``, // TODO
-        //     cancel_url: `` // TODO
-        // });
+        // Switch to Payment Intents API
+        const session = await stripe.checkout.sessions.create({
+            payment_method_types: ["card"],
+            line_items: myLineItems,
+            mode: "payment",
+            success_url: `${domainUrl}?success=true`,
+            cancel_url: `${domainUrl}?canceled=true`
+        });
         
-        // res.status(200).json({ id: session.id });
+        res.status(200).json({ id: session.id });
         
     } catch (err) {
         next(err);

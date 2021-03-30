@@ -14,10 +14,22 @@ function CustomizerUi({ handleImgChange }) {
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [homeSize, setHomeSize] = useState("");
+    
+    const [message, setMessage] = useState("");
 
     useEffect(() => {
         handleImgChange(solarDevice);
     }, [solarDevice]);
+
+    useEffect(() => {
+        const query = new URLSearchParams(window.location.search);
+
+        if (query.get("success")) {
+            setMessage("Order placed! You will receive an email confirmation shortly.");
+        } else if (query.get("canceled")) {
+            setMessage("Order canceled. Please continue to shop around and checkout when you're ready.");
+        }
+    }, []);
 
     // Stripe
     const cardElementOptions = {
@@ -84,7 +96,13 @@ function CustomizerUi({ handleImgChange }) {
             });
 
             const session = await response.json();
+            const result = await stripe.redirectToCheckout({
+                sessionId: session.id
+            });
             
+            if (result.error) {
+                setMessage(result.error.message);
+            }
 
             // After a successful payment, make API req to create order on db
 
@@ -149,7 +167,7 @@ function CustomizerUi({ handleImgChange }) {
                     <input value={homeSize} onChange={(event) => setHomeSize(event.target.value)} type="number" name="home-size" id="home-size" className="design__customizer__form__input col--half-width" required/>
                 </div>
                 <h1 className="design__customizer__form__title">Payment Details</h1>
-                <CardElement options={cardElementOptions} />
+                {/* <CardElement options={cardElementOptions} /> */}
                 <button className="design__customizer__form__submit-btn" type="submit">Pay Now</button>
                 {/* <div className="design__customizer__form__controls-container">
                     <label htmlFor="card-name" className="design__customizer__form__label">Name on Card</label>
@@ -176,6 +194,7 @@ function CustomizerUi({ handleImgChange }) {
                     <input type="number" name="billing-zip" id="billing-zip" className="design__customizer__form__input col--half-width" minLength="5" maxLength="5" required/>
                 </div> */}
             </form>
+            {message ? <p>{message}</p> : null}
         </main>
     );
 }

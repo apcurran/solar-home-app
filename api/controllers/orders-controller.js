@@ -4,7 +4,7 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const db = require("../../db/index");
 
 const { ordersValidation } = require("../validation/orders-validation");
-const { createLineItems } = require("../utils/create-line-items");
+const { calcOrderAmt } = require("../utils/calc-order-amt");
 
 async function getOrder(req, res, next) {
     try {
@@ -35,22 +35,17 @@ async function postCheckoutSession(req, res, next) {
     // get items as an array from req.body POST data
     const { itemsArr } = req.body;
     // Create line_items array
-    const myLineItems = createLineItems(itemsArr);
+    const myLineItems = calcOrderAmt(itemsArr);
     console.log("My lineItems", myLineItems);
 
-    const domainUrl = process.env.NODE_ENV === "production" ? `${DOMAIN_URL}` : "http://localhost:3000/design";
-    
     try {
         // Switch to Payment Intents API
-        const session = await stripe.checkout.sessions.create({
-            payment_method_types: ["card"],
-            line_items: myLineItems,
-            mode: "payment",
-            success_url: `${domainUrl}?success=true`,
-            cancel_url: `${domainUrl}?canceled=true`
-        });
+        // const session = await stripe.paymentIntents.create({
+        //     amount: calcOrderAmt(),
+        //     currency: "usd"
+        // });
         
-        res.status(200).json({ id: session.id });
+        // res.status(200).json({ id: session.id });
         
     } catch (err) {
         next(err);

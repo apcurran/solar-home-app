@@ -34,17 +34,16 @@ async function postCheckoutSession(req, res, next) {
     // Get quantity per 500 sq. ft. amt. from front-end
     // get items as an array from req.body POST data
     const { itemsArr } = req.body;
-    // Create line_items array
     const myTotal = calcOrderAmt(itemsArr);
 
     try {
-        // Switch to Payment Intents API
-        const session = await stripe.paymentIntents.create({
+        // Payment Intents API
+        const paymentIntent = await stripe.paymentIntents.create({
             amount: myTotal,
             currency: "usd"
         });
         
-        res.status(200).json({ id: session.id });
+        res.status(200).json({ clientSecret: paymentIntent.client_secret});
         
     } catch (err) {
         next(err);

@@ -181,6 +181,11 @@
     text-transform: uppercase;
 }
 
+.design__customizer__form__submit-btn:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
 /* Messages */
 .message {
     padding: 1rem;

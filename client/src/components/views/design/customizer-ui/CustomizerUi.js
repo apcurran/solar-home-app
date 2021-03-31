@@ -18,7 +18,7 @@ function CustomizerUi({ handleImgChange }) {
     // Stripe State
     const [successMessage, setSuccessMessage] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
-    const [isProcessing, setIsProcessing] = useState("");
+    const [isProcessing, setIsProcessing] = useState(false);
     const [isDisabled, setIsDisabled] = useState(false);
     const [clientSecret, setClientSecret] = useState("");
     // Stripe
@@ -84,6 +84,8 @@ function CustomizerUi({ handleImgChange }) {
     async function handleSubmit(event) {
         event.preventDefault();
 
+        setIsProcessing(true);
+
         const myItems = createItemsArr();
 
         try {
@@ -100,7 +102,6 @@ function CustomizerUi({ handleImgChange }) {
 
             const { clientSecret } = await response.json();
             setClientSecret(clientSecret);
-            setIsProcessing(true);
 
             const payload = await stripe.confirmCardPayment(clientSecret, {
                 payment_method: {
@@ -125,7 +126,6 @@ function CustomizerUi({ handleImgChange }) {
 
     function handleStripeCardChange(event) {
         // Display any errs
-        setIsDisabled(event.empty);
         setErrorMessage(event.error ? event.error.message : "");
     }
 
@@ -189,7 +189,7 @@ function CustomizerUi({ handleImgChange }) {
                 </div>
                 <h1 className="design__customizer__form__title">Payment Details</h1>
                 <CardElement options={cardElementOptions} onChange={handleStripeCardChange} />
-                <button className="design__customizer__form__submit-btn" type="submit">Pay Now</button>
+                <button disabled={isProcessing || successMessage} className="design__customizer__form__submit-btn" type="submit">{isProcessing ? "Processing" : "Pay Now"}</button>
                 {/* <div className="design__customizer__form__controls-container">
                     <label htmlFor="card-name" className="design__customizer__form__label">Name on Card</label>
                     <input type="text" name="card-name" id="card-name" className="design__customizer__form__input" required/>

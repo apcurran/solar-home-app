@@ -44,6 +44,9 @@ function ordersValidation(data) {
         homeSqFt:               Joi
                                     .number()
                                     .min(500)
+                                    .required(),
+        orderTotal:             Joi
+                                    .number()
                                     .required()
     });
 

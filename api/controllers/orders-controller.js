@@ -46,6 +46,7 @@ async function postOrder(req, res, next) {
 
     try {
         await ordersValidation(req.body);
+        console.log("Data validated!");
         
     } catch (err) {
         return res.status(400).json({ error: err.details[0].message });

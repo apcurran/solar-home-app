@@ -85,6 +85,9 @@ function CustomizerUi({ handleImgChange }) {
         event.preventDefault();
 
         setIsProcessing(true);
+        // Reset any previous messages
+        setErrorMessage("");
+        setSuccessMessage("");
 
         const myItems = createItemsArr();
 

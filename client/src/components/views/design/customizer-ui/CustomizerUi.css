@@ -1,5 +1,5 @@
 .design__customizer {
-    padding: 2rem 4rem;
+    padding: 5rem 4rem;
     border-top: 1px solid var(--light-grey);
     overflow-y: scroll;
 }
@@ -189,9 +189,21 @@
 }
 
 /* Messages */
+@keyframes pop-open {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
 .message {
     padding: 1rem;
     border-radius: 4px;
+
+    animation: pop-open 250ms ease-in-out forwards;
 }
 
 .message--success {

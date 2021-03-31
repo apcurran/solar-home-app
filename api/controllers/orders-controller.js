@@ -42,11 +42,8 @@ async function postCreatePaymentIntent(req, res, next) {
 
 // Route to call after postCreatePaymentIntent has successfully ran
 async function postOrder(req, res, next) {
-    console.log("postOrder controller running!");
-
     try {
         await ordersValidation(req.body);
-        console.log("Data validated!");
         
     } catch (err) {
         return res.status(400).json({ error: err.details[0].message });

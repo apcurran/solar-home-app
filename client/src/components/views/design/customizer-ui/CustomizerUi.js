@@ -16,7 +16,8 @@ function CustomizerUi({ handleImgChange }) {
     const [homeSize, setHomeSize] = useState("");
 
     // Stripe State
-    const [message, setMessage] = useState(""); // Err message or success message
+    const [successMessage, setSuccessMessage] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
     const [isProcessing, setIsProcessing] = useState("");
     const [isDisabled, setIsDisabled] = useState(false);
     const [clientSecret, setClientSecret] = useState("");
@@ -97,13 +98,22 @@ function CustomizerUi({ handleImgChange }) {
                 })
             });
 
-            const session = await response.json();
-            const result = await stripe.redirectToCheckout({
-                sessionId: session.id
+            const { clientSecret } = await response.json();
+            setClientSecret(clientSecret);
+            setIsProcessing(true);
+
+            const payload = await stripe.confirmCardPayment(clientSecret, {
+                payment_method: {
+                    card: elements.getElement(CardElement)
+                }
             });
-            
-            if (result.error) {
-                setMessage(result.error.message);
+
+            if (payload.error) {
+                setErrorMessage(`Payment failed ${payload.error.message}`);
+                setIsProcessing(false);
+              } else {
+                setSuccessMessage("Success! You should receive an email confirmation shortly.");
+                setIsProcessing(false);
             }
 
             // TODO: After a successful payment, make API req to create order on db
@@ -111,6 +121,12 @@ function CustomizerUi({ handleImgChange }) {
         } catch (err) {
             console.error(err);
         }
+    }
+
+    function handleStripeCardChange(event) {
+        // Display any errs
+        setIsDisabled(event.empty);
+        setErrorMessage(event.error ? event.error.message : "");
     }
 
     return (
@@ -172,7 +188,7 @@ function CustomizerUi({ handleImgChange }) {
                     <input value={homeSize} onChange={(event) => setHomeSize(event.target.value)} type="number" name="home-size" id="home-size" className="design__customizer__form__input col--half-width" required/>
                 </div>
                 <h1 className="design__customizer__form__title">Payment Details</h1>
-                <CardElement options={cardElementOptions} />
+                <CardElement options={cardElementOptions} onChange={handleStripeCardChange} />
                 <button className="design__customizer__form__submit-btn" type="submit">Pay Now</button>
                 {/* <div className="design__customizer__form__controls-container">
                     <label htmlFor="card-name" className="design__customizer__form__label">Name on Card</label>
@@ -199,7 +215,8 @@ function CustomizerUi({ handleImgChange }) {
                     <input type="number" name="billing-zip" id="billing-zip" className="design__customizer__form__input col--half-width" minLength="5" maxLength="5" required/>
                 </div> */}
             </form>
-            {message ? <p>{message}</p> : null}
+            {successMessage ? <p className="message message--success">{successMessage}</p> : null}
+            {errorMessage ? <p className="message message--error">{errorMessage}</p> : null}
         </main>
     );
 }

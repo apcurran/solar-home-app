@@ -35,17 +35,16 @@ async function postCheckoutSession(req, res, next) {
     // get items as an array from req.body POST data
     const { itemsArr } = req.body;
     // Create line_items array
-    const myLineItems = calcOrderAmt(itemsArr);
-    console.log("My lineItems", myLineItems);
+    const myTotal = calcOrderAmt(itemsArr);
 
     try {
         // Switch to Payment Intents API
-        // const session = await stripe.paymentIntents.create({
-        //     amount: calcOrderAmt(),
-        //     currency: "usd"
-        // });
+        const session = await stripe.paymentIntents.create({
+            amount: myTotal,
+            currency: "usd"
+        });
         
-        // res.status(200).json({ id: session.id });
+        res.status(200).json({ id: session.id });
         
     } catch (err) {
         next(err);

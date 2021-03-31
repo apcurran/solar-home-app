@@ -16,8 +16,17 @@ const inventory = {
 };
 
 function calcOrderAmt(itemsInfoArr) {
-    const calculatedTotal = itemsInfoArr.reduce((total, curr) => console.log(`Total is: ${total}, current item is: ${curr}`));
+    let totalAmt = 0;
 
+    for (let itemObj of itemsInfoArr) {
+        const currItem = inventory[itemObj.name];
+        const currItemAmt = currItem.unitAmt * itemObj.qty;
+
+        totalAmt += currItemAmt;
+    }
+
+    return totalAmt;
+    
     // const finishedLineItems = itemsInfoArr.map(item => {
     //     const currItem = inventory[item.name];
 

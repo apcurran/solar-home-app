@@ -87,7 +87,7 @@ function CustomizerUi({ handleImgChange }) {
 
         try {
             // Make fetch req
-            const response = await fetch("/api/orders/create-checkout-session", {
+            const response = await fetch("/api/orders/create-payment-intent", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -106,7 +106,7 @@ function CustomizerUi({ handleImgChange }) {
                 setMessage(result.error.message);
             }
 
-            // After a successful payment, make API req to create order on db
+            // TODO: After a successful payment, make API req to create order on db
 
         } catch (err) {
             console.error(err);

@@ -22,7 +22,7 @@ async function getOrder(req, res, next) {
     }
 }
 
-async function postCheckoutSession(req, res, next) {
+async function postCreatePaymentIntent(req, res, next) {
     // try {
     //     // Validate incoming data first
     //     await ordersValidation(req.body);
@@ -75,5 +75,5 @@ async function postOrder(req, res, next) {
 module.exports = {
     getOrder,
     postOrder,
-    postCheckoutSession
+    postCreatePaymentIntent
 };

@@ -11,6 +11,6 @@ router.get("/:orderId", ordersController.getOrder);
 
 router.post("/", ordersController.postOrder);
 
-router.post("/create-checkout-session", ordersController.postCheckoutSession);
+router.post("/create-payment-intent", ordersController.postCreatePaymentIntent);
 
 module.exports = router;

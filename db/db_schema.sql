@@ -37,7 +37,7 @@ CREATE TABLE customer_order (
     street VARCHAR NOT NULL,
     state CHAR(2) NOT NULL,
     zip CHAR(5) NOT NULL,
-    selected_solar_device VARCHAR(5) NOT NULL,
+    selected_solar_device VARCHAR NOT NULL,
     accessory_battery_pack BOOLEAN NOT NULL,
     home_sq_ft INT NOT NULL,
     order_total INT NOT NULL,

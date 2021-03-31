@@ -107,6 +107,7 @@ function CustomizerUi({ handleImgChange }) {
             setClientSecret(clientSecret);
 
             const payload = await stripe.confirmCardPayment(clientSecret, {
+                receipt_email: email,
                 payment_method: {
                     card: elements.getElement(CardElement)
                 }

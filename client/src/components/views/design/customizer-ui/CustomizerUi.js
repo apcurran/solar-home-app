@@ -19,8 +19,6 @@ function CustomizerUi({ handleImgChange }) {
     const [successMessage, setSuccessMessage] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const [isProcessing, setIsProcessing] = useState(false);
-    const [isDisabled, setIsDisabled] = useState(false);
-    const [clientSecret, setClientSecret] = useState("");
     // Stripe
     const stripe = useStripe();
     const elements = useElements();
@@ -40,16 +38,6 @@ function CustomizerUi({ handleImgChange }) {
     useEffect(() => {
         handleImgChange(solarDevice);
     }, [solarDevice]);
-
-    // useEffect(() => {
-    //     const query = new URLSearchParams(window.location.search);
-
-    //     if (query.get("success")) {
-    //         setMessage("Order placed! You will receive an email confirmation shortly.");
-    //     } else if (query.get("canceled")) {
-    //         setMessage("Order canceled. Please continue to shop around and checkout when you're ready.");
-    //     }
-    // }, []);
 
     function phoneHandler(event) {
         const inputVal = event.target.value;
@@ -72,6 +60,7 @@ function CustomizerUi({ handleImgChange }) {
         if (isBatteryPack) {
             const myBatteryPack = {
                 name: "batteryPack",
+
                 qty: 1
             };
 
@@ -79,6 +68,14 @@ function CustomizerUi({ handleImgChange }) {
         }
 
         return itemsArr;
+    }
+
+    async function createOrder() {
+        try {
+            
+        } catch (err) {
+            setErrorMessage(err.message);
+        }
     }
 
     async function handleSubmit(event) {
@@ -104,8 +101,6 @@ function CustomizerUi({ handleImgChange }) {
             });
 
             const { clientSecret } = await response.json();
-            setClientSecret(clientSecret);
-
             const payload = await stripe.confirmCardPayment(clientSecret, {
                 receipt_email: email,
                 payment_method: {
@@ -124,7 +119,7 @@ function CustomizerUi({ handleImgChange }) {
             // TODO: After a successful payment, make API req to create order on db
 
         } catch (err) {
-            console.error(err);
+            setErrorMessage(err.message);
         }
     }
 

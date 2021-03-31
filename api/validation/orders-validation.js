@@ -34,26 +34,6 @@ function ordersValidation(data) {
                                     .required(),
         selectedSolarDevice:    Joi
                                     .string()
-                                    .min(5)
-                                    .max(5)
-                                    .required(),
-        accessoryBatteryPack:   Joi
-                                    .boolean()
-                                    .required(),
-        homeSqFt:               Joi
-                                    .number()
-                                    .min(500)
-                                    .required()
-    });
-
-    return schema.validateAsync(data);
-}
-function paymentIntentValidation(data) {
-    const schema = Joi.object({
-        selectedSolarDevice:    Joi
-                                    .string()
-                                    .min(5)
-                                    .max(5)
                                     .required(),
         accessoryBatteryPack:   Joi
                                     .boolean()
@@ -68,6 +48,5 @@ function paymentIntentValidation(data) {
 }
 
 module.exports = {
-    ordersValidation,
-    paymentIntentValidation
+    ordersValidation
 };

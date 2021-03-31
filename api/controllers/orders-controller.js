@@ -23,16 +23,6 @@ async function getOrder(req, res, next) {
 }
 
 async function postCreatePaymentIntent(req, res, next) {
-    // try {
-    //     // Validate incoming data first
-    //     await ordersValidation(req.body);
-        
-    // } catch (err) {
-    //     return res.status(400).json({ error: err.details[0].message });
-    // }
-
-    // Get quantity per 500 sq. ft. amt. from front-end
-    // get items as an array from req.body POST data
     const { itemsArr } = req.body;
     const myTotal = calcOrderAmt(itemsArr);
 

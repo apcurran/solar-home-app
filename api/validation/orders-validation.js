@@ -4,6 +4,9 @@ const Joi = require("joi");
 
 function ordersValidation(data) {
     const schema = Joi.object({
+        paymentId:              Joi
+                                    .string()
+                                    .required(),
         firstName:              Joi
                                     .string()
                                     .required(),

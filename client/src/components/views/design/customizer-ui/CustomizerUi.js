@@ -70,9 +70,32 @@ function CustomizerUi({ handleImgChange }) {
         return itemsArr;
     }
 
-    async function createOrder() {
+    async function createOrder(paymentId, paymentAmt) {
         try {
-            
+            const response = await fetch("/api/orders", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    paymentId,
+                    firstName,
+                    lastName,
+                    email,
+                    phone,
+                    street: streetAddress,
+                    state: usStateAbbrev,
+                    zip,
+                    selectedSolarDevice: solarDevice,
+                    accessoryBatteryPack: isBatteryPack,
+                    homeSqFt: homeSize,
+                    orderTotal: paymentAmt
+                })
+            });
+
+            // TODO: Create err if !response.ok
+            const data = await response.json();
+
         } catch (err) {
             setErrorMessage(err.message);
         }
@@ -107,6 +130,8 @@ function CustomizerUi({ handleImgChange }) {
                     card: elements.getElement(CardElement)
                 }
             });
+            const paymentId = payload.paymentIntent.id;
+            const paymentAmt = payload.paymentIntent.amount;
 
             if (payload.error) {
                 setErrorMessage(`Payment failed ${payload.error.message}`);
@@ -114,9 +139,8 @@ function CustomizerUi({ handleImgChange }) {
               } else {
                 setSuccessMessage("Success! You should receive an email confirmation shortly.");
                 setIsProcessing(false);
+                createOrder(paymentId, paymentAmt);
             }
-
-            // TODO: After a successful payment, make API req to create order on db
 
         } catch (err) {
             setErrorMessage(err.message);

@@ -40,10 +40,11 @@ async function postCreatePaymentIntent(req, res, next) {
     }
 }
 
-// Route to call after postCheckoutSession has successfully ran
+// Route to call after postCreatePaymentIntent has successfully ran
 async function postOrder(req, res, next) {
+    console.log("postOrder controller running!");
+
     try {
-        // Validate incoming data first
         await ordersValidation(req.body);
         
     } catch (err) {
@@ -51,11 +52,75 @@ async function postOrder(req, res, next) {
     }
 
     try {
-        console.log(req.body);
-        const nowDate = new Date();
-        // Create payment_id from Stripe
+        const {
+            paymentId,
+            firstName,
+            lastName,
+            email,
+            phone,
+            street,
+            state,
+            zip,
+            selectedSolarDevice,
+            accessoryBatteryPack,
+            homeSqFt,
+            orderTotal
+        } = req.body;
+        const createdAt = new Date();
+        
+        // Save order info in db
+        await db.query(`
+            INSERT INTO customer_order
+                (
+                    payment_id,
+                    first_name,
+                    last_name,
+                    email,
+                    phone,
+                    street,
+                    state,
+                    zip,
+                    selected_solar_device,
+                    accessory_battery_pack,
+                    home_sq_ft,
+                    order_total,
+                    created_at
+                )
+            VALUES
+                (
+                    $1,
+                    $2,
+                    $3,
+                    $4,
+                    $5,
+                    $6,
+                    $7,
+                    $8,
+                    $9,
+                    $10,
+                    $11,
+                    $12,
+                    $13
+                )
+        `,
+        [
+            paymentId,
+            firstName,
+            lastName,
+            email,
+            phone,
+            street,
+            state,
+            zip,
+            selectedSolarDevice,
+            accessoryBatteryPack,
+            homeSqFt,
+            orderTotal,
+            createdAt
+        ]
+        );
 
-        res.status(200).json({ message: "Your order was recieved!" });
+        res.status(200).json({ message: "Your order was received!" });
 
     } catch (err) {
         next(err);

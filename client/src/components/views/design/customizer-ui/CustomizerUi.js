@@ -40,15 +40,15 @@ function CustomizerUi({ handleImgChange }) {
         handleImgChange(solarDevice);
     }, [solarDevice]);
 
-    useEffect(() => {
-        const query = new URLSearchParams(window.location.search);
+    // useEffect(() => {
+    //     const query = new URLSearchParams(window.location.search);
 
-        if (query.get("success")) {
-            setMessage("Order placed! You will receive an email confirmation shortly.");
-        } else if (query.get("canceled")) {
-            setMessage("Order canceled. Please continue to shop around and checkout when you're ready.");
-        }
-    }, []);
+    //     if (query.get("success")) {
+    //         setMessage("Order placed! You will receive an email confirmation shortly.");
+    //     } else if (query.get("canceled")) {
+    //         setMessage("Order canceled. Please continue to shop around and checkout when you're ready.");
+    //     }
+    // }, []);
 
     function phoneHandler(event) {
         const inputVal = event.target.value;

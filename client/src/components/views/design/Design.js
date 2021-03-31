@@ -11,7 +11,7 @@ function Design() {
     const [solarDeviceImg, setSolarDeviceImg] = useState(tileImg);
 
     function handleImgChange(solarDevice) {
-        if (solarDevice === "panels") {
+        if (solarDevice === "solarPanels") {
             setSolarDeviceImg(panelImg);
         } else {
             setSolarDeviceImg(tileImg);

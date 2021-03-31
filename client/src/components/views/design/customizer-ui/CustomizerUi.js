@@ -14,8 +14,27 @@ function CustomizerUi({ handleImgChange }) {
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [homeSize, setHomeSize] = useState("");
-    
-    const [message, setMessage] = useState("");
+
+    // Stripe State
+    const [message, setMessage] = useState(""); // Err message or success message
+    const [isProcessing, setIsProcessing] = useState("");
+    const [isDisabled, setIsDisabled] = useState(false);
+    const [clientSecret, setClientSecret] = useState("");
+    // Stripe
+    const stripe = useStripe();
+    const elements = useElements();
+    const cardElementOptions = {
+        style: {
+            base: {
+                fontSize: "18px",
+                color: "#3730a3",
+                "::placeholder": {
+                    color: "#818cf8"
+                }
+            }
+        },
+        hidePostalCode: true
+    };
 
     useEffect(() => {
         handleImgChange(solarDevice);
@@ -30,23 +49,6 @@ function CustomizerUi({ handleImgChange }) {
             setMessage("Order canceled. Please continue to shop around and checkout when you're ready.");
         }
     }, []);
-
-    // Stripe
-    const cardElementOptions = {
-        style: {
-            base: {
-                fontSize: "18px",
-                color: "#3730a3",
-                "::placeholder": {
-                    color: "#818cf8"
-                }
-            }
-        },
-        hidePostalCode: true
-    };
-
-    const stripe = useStripe();
-    const elements = useElements();
 
     function phoneHandler(event) {
         const inputVal = event.target.value;

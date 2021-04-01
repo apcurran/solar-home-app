@@ -91,3 +91,15 @@
     padding-top: 6rem;
     padding-bottom: 6rem;
 }
+
+/* Mobile layout */
+@media screen and (max-width: 75em) {
+    .home__main__sect,
+    .home__main__sect:nth-of-type(even) {
+        grid-template-columns: 1fr;
+    }
+
+    .home__main__sect__inner-sect-content {
+        order: -1;
+    }
+}

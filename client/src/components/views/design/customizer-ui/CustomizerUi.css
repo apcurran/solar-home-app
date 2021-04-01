@@ -156,7 +156,7 @@
     transition: transform 120ms ease-in-out;
 }
 
-/* When the chechbox is checked, select the adjacent fake checkbox ::after elem */
+/* When the checkbox is checked, select the adjacent fake checkbox ::after elem */
 .battery-checkbox:checked + .battery-checkbox--fake {
     background-color: var(--very-dark-indigo);
     border-color: var(--very-dark-indigo);
@@ -164,6 +164,12 @@
 
 .battery-checkbox:checked + .battery-checkbox--fake::after {
     transform: scale(1);
+}
+
+.grand-total {
+    display: inline-block;
+    margin-left: 1rem;
+    color: var(--dark-indigo);
 }
 
 .design__customizer__form__submit-btn {

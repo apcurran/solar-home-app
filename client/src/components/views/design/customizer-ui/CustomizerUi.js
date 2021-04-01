@@ -225,7 +225,7 @@ function CustomizerUi({ handleImgChange }) {
                     <label htmlFor="home-size" className="design__customizer__form__label">Home Size <span className="design__customizer__form__label-note">(sq. ft.)</span></label>
                     <input value={homeSize} onChange={(event) => setHomeSize(event.target.value)} type="number" name="home-size" id="home-size" className="design__customizer__form__input col--half-width" required/>
                 </div>
-
+                <h2 className="design__customizer__form__title design__customizer__form__title--total">Total:<span className="grand-total">${grandTotal}</span></h2>
                 <h2 className="design__customizer__form__title">Payment Details</h2>
                 <CardElement options={cardElementOptions} onChange={handleStripeCardChange} />
                 <button disabled={isProcessing || successMessage} className="design__customizer__form__submit-btn" type="submit">{isProcessing ? "Processing" : "Pay Now"}</button>

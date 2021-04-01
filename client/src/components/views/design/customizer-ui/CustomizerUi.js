@@ -82,7 +82,7 @@ function CustomizerUi({ handleImgChange }) {
                 qty: 1,
                 total: 6000
             };
-            
+
             itemsArr.push(myBatteryPack);
         }
 
@@ -128,8 +128,6 @@ function CustomizerUi({ handleImgChange }) {
         setErrorMessage("");
         setSuccessMessage("");
 
-        const myItems = createItemsArr();
-
         try {
             const response = await fetch("/api/orders/create-payment-intent", {
                 method: "POST",
@@ -137,7 +135,7 @@ function CustomizerUi({ handleImgChange }) {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    itemsArr: myItems
+                    itemsArr: cartItems // Pulled from comp-level state
                 })
             });
 
@@ -172,7 +170,7 @@ function CustomizerUi({ handleImgChange }) {
     return (
         <main onSubmit={handleSubmit} className="design__customizer">
             <form className="design__customizer__form">
-                <h1 className="design__customizer__form__title">Pick Your Style</h1>
+                <h2 className="design__customizer__form__title">Pick Your Style</h2>
                 <div className="radio-btn-controls-container">
                     <label htmlFor="tiles" className="design__customizer__form__label radio-label">
                         <input value="solarTiles" onChange={(event) => setSolarDevice(event.target.value)} name="selected-solar-device" id="tiles" type="radio" className="design__customizer__form__radio-btn radio-btn sr-only" required/>
@@ -185,7 +183,7 @@ function CustomizerUi({ handleImgChange }) {
                         Solar Panels
                     </label>
                 </div>
-                <h1 className="design__customizer__form__title title--note-included">Add Battery Pack</h1>
+                <h2 className="design__customizer__form__title title--note-included">Add Battery Pack</h2>
                 <span className="design__customizer__form__title-note">(Optional)</span>
                 <div className="design__customizer__form__controls-container">
                     <label htmlFor="battery" className="design__customizer__form__label battery-checkbox-label">
@@ -194,7 +192,7 @@ function CustomizerUi({ handleImgChange }) {
                         Include Battery Pack?
                     </label>
                 </div>
-                <h1 className="design__customizer__form__title">Personal Info</h1>
+                <h2 className="design__customizer__form__title">Personal Info</h2>
                 <div className="design__customizer__form__controls-container">
                     <label htmlFor="first-name" className="design__customizer__form__label">First Name</label>
                     <input value={firstName} onChange={(event) => setFirstName(event.target.value)} type="text" name="first-name" id="first-name" className="design__customizer__form__input" required/>
@@ -227,7 +225,8 @@ function CustomizerUi({ handleImgChange }) {
                     <label htmlFor="home-size" className="design__customizer__form__label">Home Size <span className="design__customizer__form__label-note">(sq. ft.)</span></label>
                     <input value={homeSize} onChange={(event) => setHomeSize(event.target.value)} type="number" name="home-size" id="home-size" className="design__customizer__form__input col--half-width" required/>
                 </div>
-                <h1 className="design__customizer__form__title">Payment Details</h1>
+
+                <h2 className="design__customizer__form__title">Payment Details</h2>
                 <CardElement options={cardElementOptions} onChange={handleStripeCardChange} />
                 <button disabled={isProcessing || successMessage} className="design__customizer__form__submit-btn" type="submit">{isProcessing ? "Processing" : "Pay Now"}</button>
             </form>

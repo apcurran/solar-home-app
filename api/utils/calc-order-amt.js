@@ -16,6 +16,7 @@ const inventory = {
 };
 
 function calcOrderAmt(itemsInfoArr) {
+    // Calc price server-side to prevent tampering
     let totalAmt = 0;
 
     for (let itemObj of itemsInfoArr) {

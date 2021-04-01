@@ -16,7 +16,7 @@ function CustomizerUi({ handleImgChange }) {
     const [homeSize, setHomeSize] = useState(0);
 
     const [cartItems, setCartItems] = useState([]);
-    const [grandTotal, setGrandTotal] = useState(0);
+    const [grandTotal, setGrandTotal] = useState("");
 
     // Stripe State
     const [successMessage, setSuccessMessage] = useState("");
@@ -45,9 +45,10 @@ function CustomizerUi({ handleImgChange }) {
     useEffect(() => {
         const myItems = createItemsArr();
         const myItemsGrandTotal = calcGrandTotal(myItems);
+        const myFormattedItemsGrandTotal = formatCurrency(myItemsGrandTotal);
         // Set comp-level state
         setCartItems(myItems);
-        setGrandTotal(myItemsGrandTotal);
+        setGrandTotal(myFormattedItemsGrandTotal);
 
     }, [solarDevice, isBatteryPack, homeSize]);
 
@@ -60,6 +61,12 @@ function CustomizerUi({ handleImgChange }) {
 
     function calcGrandTotal(itemsArr) {
         return itemsArr.reduce((grandTotal, currItem) => grandTotal + currItem.total, 0);
+    }
+
+    function formatCurrency(amt) {
+        return new Intl
+                    .NumberFormat("en-US", { style: "currency", currency: "USD" })
+                    .format(amt);
     }
 
     function createItemsArr() {
@@ -225,7 +232,7 @@ function CustomizerUi({ handleImgChange }) {
                     <label htmlFor="home-size" className="design__customizer__form__label">Home Size <span className="design__customizer__form__label-note">(sq. ft.)</span></label>
                     <input value={homeSize} onChange={(event) => setHomeSize(event.target.value)} type="number" name="home-size" id="home-size" className="design__customizer__form__input col--half-width" required/>
                 </div>
-                <h2 className="design__customizer__form__title design__customizer__form__title--total">Total:<span className="grand-total">${grandTotal}</span></h2>
+                <h2 className="design__customizer__form__title design__customizer__form__title--total">Total:<span className="grand-total">{grandTotal}</span></h2>
                 <h2 className="design__customizer__form__title">Payment Details</h2>
                 <CardElement options={cardElementOptions} onChange={handleStripeCardChange} />
                 <button disabled={isProcessing || successMessage} className="design__customizer__form__submit-btn" type="submit">{isProcessing ? "Processing" : "Pay Now"}</button>

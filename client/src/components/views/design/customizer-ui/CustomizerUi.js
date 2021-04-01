@@ -13,7 +13,10 @@ function CustomizerUi({ handleImgChange }) {
     const [zip, setZip] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
-    const [homeSize, setHomeSize] = useState("");
+    const [homeSize, setHomeSize] = useState(0);
+
+    const [cartItems, setCartItems] = useState([]);
+    const [grandTotal, setGrandTotal] = useState(0);
 
     // Stripe State
     const [successMessage, setSuccessMessage] = useState("");
@@ -39,6 +42,15 @@ function CustomizerUi({ handleImgChange }) {
         handleImgChange(solarDevice);
     }, [solarDevice]);
 
+    useEffect(() => {
+        const myItems = createItemsArr();
+        const myItemsGrandTotal = calcGrandTotal(myItems);
+        // Set comp-level state
+        setCartItems(myItems);
+        setGrandTotal(myItemsGrandTotal);
+
+    }, [solarDevice, isBatteryPack, homeSize]);
+
     function phoneHandler(event) {
         const inputVal = event.target.value;
         const validatedInputval = inputVal.replace(/[^0-9]/g, "");
@@ -46,24 +58,31 @@ function CustomizerUi({ handleImgChange }) {
         setPhone(validatedInputval);
     }
 
+    function calcGrandTotal(itemsArr) {
+        return itemsArr.reduce((grandTotal, currItem) => grandTotal + currItem.total, 0);
+    }
+
     function createItemsArr() {
         // Pull items from local state
         let itemsArr = [];
 
+        const mySolarDeviceUnitAmt = solarDevice === "solarTiles" ? 10000 : 2500; // Re-calced server-side to prevent tampering
+        const mySolarDeviceQty = Math.round(homeSize / 500); // Calc qty from homeSize div by 500, rounded up
         const mySolarDevice = {
             name: solarDevice,
-            qty: Math.round(homeSize / 500) // Calc qty from homeSize div by 500, rounded up
+            qty: mySolarDeviceQty,
+            total: mySolarDeviceUnitAmt * mySolarDeviceQty
         };
-
+        
         itemsArr.push(mySolarDevice);
-
+        
         if (isBatteryPack) {
             const myBatteryPack = {
                 name: "batteryPack",
-
-                qty: 1
+                qty: 1,
+                total: 6000
             };
-
+            
             itemsArr.push(myBatteryPack);
         }
 

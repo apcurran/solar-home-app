@@ -110,6 +110,14 @@
         padding-left: var(--mobile-med-header-padding-horiz);
     }
 
+    .home__hero__title {
+        font-size: 3.5rem;
+    }
+
+    .home__hero__title--subheading {
+        font-size: 1.25rem;
+    }
+
     .home__main__sect,
     .home__main__sect:nth-of-type(even) {
         grid-template-columns: 1fr;

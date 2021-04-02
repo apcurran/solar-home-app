@@ -227,3 +227,9 @@
         overflow-y: initial;
     }
 }
+
+@media screen and (max-width: 25em) {
+    .design__customizer {
+        padding: 3rem 2rem;
+    }
+}

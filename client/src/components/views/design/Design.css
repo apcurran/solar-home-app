@@ -52,3 +52,9 @@
         grid-row: 3 / 4;
     }
 }
+
+@media screen and (max-width: 45em) {
+    .header-design {
+        height: 12vh;
+    }
+}

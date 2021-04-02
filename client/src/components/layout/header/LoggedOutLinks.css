@@ -39,3 +39,25 @@
         justify-self: end;
     }
 }
+
+@media screen and (max-width: 45em) {
+    .nav__list {
+        grid-template-columns: 1fr;
+        justify-items: start;
+    }
+
+    .nav__list__item--left,
+    .nav__list__item--center {
+        grid-column: 1 / 2;
+    }
+
+    .nav__list__item--center {
+        justify-self: start;
+    }
+}
+
+@media screen and (max-width: 25em) {
+    .nav__logo {
+        width: 16rem;
+    }
+}

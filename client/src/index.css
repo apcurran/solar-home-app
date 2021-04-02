@@ -6,6 +6,7 @@
 
 :root {
   --header-padding-horiz: 8rem;
+  --mobile-med-header-padding-horiz: 2rem;
   --home-sect-padding-vert: 3rem;
 
   --base-fz: 1.0625rem;

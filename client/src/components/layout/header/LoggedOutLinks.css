@@ -29,3 +29,13 @@
 .logo-icon {
     fill: var(--light-indigo);
 }
+
+@media screen and (max-width: 70em) {
+    .nav__list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .nav__list__item--center {
+        justify-self: end;
+    }
+}

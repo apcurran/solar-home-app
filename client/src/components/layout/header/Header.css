@@ -23,3 +23,9 @@
 .nav {
     padding: 1.5rem var(--header-padding-horiz);
 }
+
+@media screen and (max-width: 70em) {
+    .nav {
+        padding: 1rem var(--mobile-med-header-padding-horiz);
+    }
+}

@@ -25,7 +25,13 @@
     grid-row: 2 / 3;
 }
 
-@media screen and (max-width: 100em) {
+@media screen and (max-width: 110em) {
+    .design-container {
+        grid-template-columns: 1.75fr 1fr;
+    }
+}
+
+@media screen and (max-width: 70em) {
     .design-container {
         grid-template-columns: 1fr;
         grid-template-rows: auto auto auto;
@@ -44,6 +50,5 @@
 
     .design__customizer {
         grid-row: 3 / 4;
-        overflow-y: initial;
     }
 }

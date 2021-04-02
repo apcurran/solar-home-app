@@ -45,7 +45,7 @@
 
     .design__gallery {
         grid-row: 2 / 3;
-        height: 60vh;
+        height: 50vh;
     }
 
     .design__customizer {
@@ -55,6 +55,6 @@
 
 @media screen and (max-width: 45em) {
     .header-design {
-        height: 12vh;
+        height: 22vh;
     }
 }

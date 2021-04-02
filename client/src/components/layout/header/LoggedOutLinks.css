@@ -44,6 +44,7 @@
     .nav__list {
         grid-template-columns: 1fr;
         justify-items: start;
+        gap: .75rem;
     }
 
     .nav__list__item--left,

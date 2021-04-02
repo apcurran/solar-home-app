@@ -133,6 +133,11 @@
         padding: var(--mobile-med-home-sect-padding-vert) var(--mobile-med-home-sect-padding-horiz);
     }
 
+    .home__main__app-sect {
+        padding-top: 0;
+        padding-bottom: 2rem;
+    }
+
     .home__main__app-sect__fig {
         padding: 0 var(--mobile-med-home-sect-padding-horiz);
     }

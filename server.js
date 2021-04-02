@@ -3,6 +3,7 @@
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
+const compression = require("compression");
 
 const PORT = process.env.PORT || 5000;
 // Import routers
@@ -18,9 +19,9 @@ if (process.env.NODE_ENV === "development") {
 }
 
 // Middleware
+app.use(compression());
 app.use(express.json());
-//**** DEPLOYMENT ****
-// app.use(express.static(path.join(__dirname, "client", "build")));
+app.use(express.static(path.join(__dirname, "client", "build")));
 
 // API routers
 app.use("/api/solar-design", solarDesignRouter);
@@ -33,10 +34,9 @@ app.use((err, req, res, next) => {
     return res.status(500).json({ error: err.message });
 });
 
-//**** DEPLOYMENT ****
 // Catch-all handler for React HTML file
-// app.get("*", (req, res) => {
-//     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-// });
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 
 app.listen(PORT, () => console.log(`Server running in ${process.env.NODE_ENV} mode, and listening on PORT ${PORT}.`));

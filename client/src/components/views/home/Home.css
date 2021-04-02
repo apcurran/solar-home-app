@@ -92,6 +92,18 @@
     padding-bottom: 6rem;
 }
 
+.home__main__app-sect__fig {
+    padding: 2rem 2.5rem;
+}
+
+.home__main__app-sect__fig__illustration {
+    width: 100%;
+}
+
+.home__main__app-sect__desc {
+    padding: 0 2.5rem;
+}
+
 /* Mobile layout */
 @media screen and (max-width: 75em) {
     .home__main__sect,
@@ -101,5 +113,15 @@
 
     .home__main__sect__inner-sect-content {
         order: -1;
+    }
+}
+
+@media screen and (max-width: 45em) {
+    .home__main__sect__inner-sect-content {
+        padding: var(--mobile-med-home-sect-padding-vert) var(--mobile-med-home-sect-padding-horiz);
+    }
+
+    .home__main__app-sect__fig {
+        padding: 0 var(--mobile-med-home-sect-padding-horiz);
     }
 }

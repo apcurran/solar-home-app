@@ -106,6 +106,10 @@
 
 /* Mobile layout */
 @media screen and (max-width: 75em) {
+    .home__hero__title-sect {
+        padding-left: var(--mobile-med-header-padding-horiz);
+    }
+
     .home__main__sect,
     .home__main__sect:nth-of-type(even) {
         grid-template-columns: 1fr;

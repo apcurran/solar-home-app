@@ -17,3 +17,7 @@
 - PostgreSQL DB with native PG driver
 
 - All custom CSS layout/styling with modern CSS features (Grid, Flexbox, Custom Properties, etc.)
+
+![Main home page](./readme-imgs/home-view.jpg)
+
+![Design your own solar solution page](./readme-imgs/design-view.jpg)

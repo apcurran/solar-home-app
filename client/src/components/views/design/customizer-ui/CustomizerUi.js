@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
 import "./CustomizerUi.css";
+import Message from "./message/Message";
 
 function CustomizerUi({ handleImgChange }) {
     const [solarDevice, setSolarDevice] = useState("");
@@ -153,8 +154,6 @@ function CustomizerUi({ handleImgChange }) {
                     card: elements.getElement(CardElement)
                 }
             });
-            const paymentId = payload.paymentIntent.id;
-            const paymentAmt = payload.paymentIntent.amount;
 
             if (payload.error) {
                 setErrorMessage(`Payment failed ${payload.error.message}`);
@@ -162,7 +161,7 @@ function CustomizerUi({ handleImgChange }) {
               } else {
                 setSuccessMessage("Success! You should receive an email confirmation shortly.");
                 setIsProcessing(false);
-                createOrder(paymentId, paymentAmt);
+                createOrder(payload.paymentIntent.id, payload.paymentIntent.amount); // Changed here
             }
 
         } catch (err) {
@@ -237,8 +236,8 @@ function CustomizerUi({ handleImgChange }) {
                 <CardElement options={cardElementOptions} onChange={handleStripeCardChange} />
                 <button disabled={isProcessing || successMessage} className="design__customizer__form__submit-btn" type="submit">{isProcessing ? "Processing" : "Pay Now"}</button>
             </form>
-            {successMessage ? <p className="message message--success">{successMessage}</p> : null}
-            {errorMessage ? <p className="message message--error">{errorMessage}</p> : null}
+            {successMessage ? <Message successMessage={successMessage} /> : null}
+            {errorMessage ? <Message errorMessage={errorMessage} /> : null}
         </main>
     );
 }

@@ -194,34 +194,6 @@
     cursor: default;
 }
 
-/* Messages */
-@keyframes pop-open {
-    from {
-        transform: scale(0);
-    }
-
-    to {
-        transform: scale(1);
-    }
-}
-
-.message {
-    padding: 1rem;
-    border-radius: 4px;
-
-    animation: pop-open 250ms ease-in-out forwards;
-}
-
-.message--success {
-    background-color: var(--light-indigo);
-    color: var(--very-dark-indigo);
-}
-
-.message--error {
-    background-color: var(--light-orange);
-    color: var(--dark-orange);
-}
-
 @media screen and (max-width: 70em) {
     .design__customizer {
         overflow-y: initial;

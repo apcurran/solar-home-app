@@ -156,12 +156,12 @@ function CustomizerUi({ handleImgChange }) {
             });
 
             if (payload.error) {
-                setErrorMessage(`Payment failed ${payload.error.message}`);
+                setErrorMessage(`Payment failed: ${payload.error.message}`);
                 setIsProcessing(false);
               } else {
                 setSuccessMessage("Success! You should receive an email confirmation shortly.");
                 setIsProcessing(false);
-                createOrder(payload.paymentIntent.id, payload.paymentIntent.amount); // Changed here
+                createOrder(payload.paymentIntent.id, payload.paymentIntent.amount);
             }
 
         } catch (err) {

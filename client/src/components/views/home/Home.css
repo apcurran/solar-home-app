@@ -118,6 +118,21 @@
         font-size: 1.25rem;
     }
 
+    .home__main__sect {
+        position: relative;
+    }
+
+    .home__main__sect__inner-sect-content {
+        position: absolute;
+        top: 10%;
+        background-color: hsla(244, 55%, 41%, .75);
+    }
+
+    .home__main__sect__inner-sect__title,
+    .home__main__sect__inner-sect__desc {
+        color: #fff;
+    }
+
     .home__main__sect,
     .home__main__sect:nth-of-type(even) {
         grid-template-columns: 1fr;

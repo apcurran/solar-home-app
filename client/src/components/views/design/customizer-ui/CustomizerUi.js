@@ -3,6 +3,7 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
 import "./CustomizerUi.css";
 import Message from "./message/Message";
+import { formatCurrency } from "../../../../utils/format-currency";
 
 function CustomizerUi({ handleImgChange }) {
     const [solarDevice, setSolarDevice] = useState("");
@@ -62,12 +63,6 @@ function CustomizerUi({ handleImgChange }) {
 
     function calcGrandTotal(itemsArr) {
         return itemsArr.reduce((grandTotal, currItem) => grandTotal + currItem.total, 0);
-    }
-
-    function formatCurrency(amt) {
-        return new Intl
-                    .NumberFormat("en-US", { style: "currency", currency: "USD" })
-                    .format(amt);
     }
 
     function createItemsArr() {

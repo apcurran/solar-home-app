@@ -115,8 +115,15 @@ function CustomizerUi({ handleImgChange }) {
                 })
             });
 
-            // TODO: Create err if !response.ok
-            const data = await response.json();
+            if (!response.ok) {
+                // Access error data on processed res
+                const errData = await response.json();
+                const error = new Error(errData);
+
+                throw error;
+            }
+
+            await response.json();
 
         } catch (err) {
             setErrorMessage(err.message);

@@ -42,7 +42,7 @@ function CustomizerUi({ handleImgChange }) {
 
     useEffect(() => {
         handleImgChange(solarDevice);
-    }, [solarDevice]);
+    }, [solarDevice, handleImgChange]);
 
     useEffect(() => {
         const myItems = createItemsArr();
@@ -215,11 +215,11 @@ function CustomizerUi({ handleImgChange }) {
                 </div>
                 <div className="design__customizer__form__controls-container">
                     <label htmlFor="state" className="design__customizer__form__label">State <span className="design__customizer__form__label-note">(2 Characters)</span></label>
-                    <input value={usStateAbbrev} onChange={(event) => setUsStateAbbrev(event.target.value)} type="text" name="state" id="state" className="design__customizer__form__input col--half-width" minLength="2" maxLength="2" required/>
+                    <input value={usStateAbbrev} onChange={(event) => setUsStateAbbrev(event.target.value)} type="text" name="state" id="state" className="design__customizer__form__input col--half-width" minLength={2} maxLength={2} required/>
                 </div>
                 <div className="design__customizer__form__controls-container">
                     <label htmlFor="zip" className="design__customizer__form__label">Zip Code <span className="design__customizer__form__label-note">(5 Characters)</span></label>
-                    <input value={zip} onChange={(event) => setZip(event.target.value)} type="number" name="zip" id="zip" className="design__customizer__form__input col--half-width" minLength="5" maxLength="5" required/>
+                    <input value={zip} onChange={(event) => setZip(event.target.value)} type="number" name="zip" id="zip" className="design__customizer__form__input col--half-width" minLength={5} maxLength={5} required/>
                 </div>
                 <div className="design__customizer__form__controls-container">
                     <label htmlFor="email" className="design__customizer__form__label">Email</label>

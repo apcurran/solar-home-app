@@ -6,7 +6,7 @@ const db = require("../db/index");
 
 (async function populateDb() {
     // Create solar_tile data
-    const tilePricePer500SqFt = 7500 // U.S. dollars
+    const tilePricePer500SqFt = 7500; // U.S. dollars
     const savedSolarTileData = await db.query(`
         INSERT INTO solar_tile
             (price_per_500_sq_ft)
@@ -16,7 +16,7 @@ const db = require("../db/index");
     `, [tilePricePer500SqFt]);
 
     // Create solar_panel data
-    const panelPricePer500SqFt = 3200 // U.S. dollars
+    const panelPricePer500SqFt = 3200; // U.S. dollars
     const savedSolarPanelData = await db.query(`
         INSERT INTO solar_panel
             (price_per_500_sq_ft)
@@ -26,7 +26,7 @@ const db = require("../db/index");
     `, [panelPricePer500SqFt]);
 
     // Create battery_pack data
-    const batteryPackPrice = 10000 // U.S. dollars
+    const batteryPackPrice = 10000; // U.S. dollars
     const savedBatteryPackData = await db.query(`
         INSERT INTO battery_pack
             (price)

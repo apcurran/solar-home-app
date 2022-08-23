@@ -28,6 +28,7 @@ app.use("/api/solar-design", solarDesignRouter);
 app.use("/api/orders", ordersRouter);
 
 // General server error handler
+// eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
     console.error(err);
 

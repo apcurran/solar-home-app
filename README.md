@@ -1,7 +1,5 @@
 # Aperture Solar
 
-[View Live Site](https://apcurran-aperture-solar.herokuapp.com/)
-
 ## Features:
 
 - Choose your own Solar products to suit unique needs (solar tile or panel design, along with optional power-storing battery)
